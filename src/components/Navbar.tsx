@@ -58,7 +58,7 @@ export function Navbar({
   }, [isMenuOpen]);
 
   return (
-    <header className="w-full bg-transparent">
+    <header className="min-h-16 w-full bg-transparent sm:min-h-0">
       <nav
         className="hidden min-h-15.5 grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center px-[34px] sm:grid"
         aria-label="Main navigation"
@@ -78,7 +78,7 @@ export function Navbar({
       </nav>
 
       <nav
-        className={`relative z-50 sm:hidden ${isMenuOpen ? "min-h-dvh" : ""}`}
+        className={`${isMenuOpen ? "fixed inset-0 z-50 min-h-dvh overflow-y-auto" : "relative"} sm:hidden`}
         aria-label="Mobile navigation"
       >
         <div className="flex min-h-16 items-center justify-between px-5">
@@ -109,21 +109,22 @@ export function Navbar({
             )}
           </button>
         </div>
-        {isMenuOpen && (
-          <ul id="mobile-menu-links" className="m-0 flex list-none flex-col gap-6 px-5 pt-11 pb-12">
-            {links.map(({ label, href }) => (
-              <li key={`${label}-${href}`}>
-                <Link
-                  className="inline-flex min-h-12 items-center font-serif text-[clamp(2rem,9vw,2.75rem)] leading-none text-white uppercase no-underline transition-opacity duration-150 hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-4"
-                  href={href}
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        )}
+        <ul
+          id="mobile-menu-links"
+          className={`m-0 list-none flex-col gap-6 px-5 pt-11 pb-12 ${isMenuOpen ? "flex" : "hidden"}`}
+        >
+          {links.map(({ label, href }) => (
+            <li key={`${label}-${href}`}>
+              <Link
+                className="inline-flex min-h-12 items-center font-serif text-[clamp(2rem,9vw,2.75rem)] leading-none text-white uppercase no-underline transition-opacity duration-150 hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-4"
+                href={href}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {label}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </nav>
     </header>
   );
