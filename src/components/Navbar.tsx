@@ -60,7 +60,7 @@ export function Navbar({
   return (
     <header className="min-h-16 w-full bg-transparent sm:min-h-0">
       <nav
-        className="hidden min-h-15.5 grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center px-[34px] sm:grid"
+        className="hidden min-h-15.5 grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center px-8.5 sm:grid"
         aria-label="Main navigation"
       >
         <Link
@@ -99,11 +99,19 @@ export function Navbar({
             onClick={() => setIsMenuOpen((open) => !open)}
           >
             {isMenuOpen ? (
-              <svg aria-hidden="true" viewBox="0 0 24 24" className="size-5 fill-none stroke-current stroke-[1.5]">
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                className="size-5 fill-none stroke-current stroke-[1.5]"
+              >
                 <path d="M5 5l14 14M19 5L5 19" />
               </svg>
             ) : (
-              <svg aria-hidden="true" viewBox="0 0 24 24" className="size-5 fill-none stroke-current stroke-[1.5]">
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                className="size-5 fill-none stroke-current stroke-[1.5]"
+              >
                 <path d="M5 7h14M5 12h14M5 17h14" />
               </svg>
             )}
