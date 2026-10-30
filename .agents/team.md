@@ -4,13 +4,13 @@
 
 The lead owns the user's outcome and remains accountable for decisions, integration, verification, and the final report. Roles provide focused expertise; they do not transfer ownership of the result.
 
-| Role | Rules | Expected result |
-| --- | --- | --- |
-| Lead | [lead.md](lead.md) | Integrated result and final report. |
-| Planner | [planner.md](planner.md) | Short plan with acceptance criteria, file scope, and checks. |
-| Developer | [developer.md](developer.md) | Focused code changes and implementation notes. |
-| QA | [qa.md](qa.md) | Evidence-based review of behavior, regressions, and code quality. |
-| UI/UX | [ui-ux.md](ui-ux.md) | User-centered design and accessibility findings. |
+| Role      | Rules                        | Expected result                                                   |
+| --------- | ---------------------------- | ----------------------------------------------------------------- |
+| Lead      | [lead.md](lead.md)           | Integrated result and final report.                               |
+| Planner   | [planner.md](planner.md)     | Short plan with acceptance criteria, file scope, and checks.      |
+| Developer | [developer.md](developer.md) | Focused code changes and implementation notes.                    |
+| QA        | [qa.md](qa.md)               | Evidence-based review of behavior, regressions, and code quality. |
+| UI/UX     | [ui-ux.md](ui-ux.md)         | User-centered design and accessibility findings.                  |
 
 Use an API, database, security, performance, or deployment specialist when the task has a concrete decision or risk in that area. Give the specialist a question to answer and the relevant artifacts, rather than a general review assignment.
 
