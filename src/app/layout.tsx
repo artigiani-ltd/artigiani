@@ -18,6 +18,14 @@ const beauRivage = localFont({
   display: "swap",
 });
 
+const editorial = localFont({
+  src: "../fonts/EBGaramond-Italic.ttf",
+  variable: "--font-editorial",
+  weight: "400",
+  style: "italic",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "Artigiani",
   description: "Artigiani",
@@ -36,9 +44,12 @@ const rightLinks: readonly NavbarLink[] = [
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${interDisplay.variable} ${beauRivage.variable}`}>
+    <html
+      lang="en"
+      className={`${interDisplay.variable} ${beauRivage.variable} ${editorial.variable}`}
+    >
       <body>
-        <div className="min-h-screen bg-[#171717]">
+        <div className="relative min-h-screen bg-background">
           <Navbar brand="Artigiani" leftLinks={leftLinks} rightLinks={rightLinks} />
           {children}
         </div>

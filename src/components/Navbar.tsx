@@ -26,7 +26,7 @@ function NavLinks({ links, className = "" }: NavLinksProps) {
       {links.map(({ label, href }) => (
         <li key={`${label}-${href}`}>
           <Link
-            className="inline-flex min-h-11 items-center font-sans text-xs leading-none font-semibold text-white uppercase no-underline transition-opacity duration-150 hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-4"
+            className="inline-flex min-h-11 items-center font-sans text-xs leading-none font-semibold text-[#302820] uppercase no-underline transition-opacity duration-150 hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-4"
             href={href}
           >
             {label}
@@ -58,13 +58,13 @@ export function Navbar({
   }, [isMenuOpen]);
 
   return (
-    <header className="min-h-16 w-full bg-transparent sm:min-h-0">
+    <header className="absolute inset-x-0 top-0 z-10 min-h-16 bg-transparent sm:min-h-0">
       <nav
         className="hidden min-h-15.5 grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center px-8.5 sm:grid"
         aria-label="Main navigation"
       >
         <Link
-          className="font-brand col-start-2 row-start-1 whitespace-nowrap text-[28px] leading-none text-white no-underline transition-opacity duration-150 hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-4"
+          className="font-brand col-start-2 row-start-1 whitespace-nowrap text-[28px] leading-none text-[#302820] no-underline transition-opacity duration-150 hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-4"
           href={brandHref}
           aria-label={`${brand} home`}
         >
@@ -78,12 +78,12 @@ export function Navbar({
       </nav>
 
       <nav
-        className={`${isMenuOpen ? "fixed inset-0 z-50 min-h-dvh overflow-y-auto" : "relative"} sm:hidden`}
+        className={`${isMenuOpen ? "fixed inset-0 z-50 min-h-dvh overflow-y-auto bg-[#171717]" : "relative"} sm:hidden`}
         aria-label="Mobile navigation"
       >
         <div className="flex min-h-16 items-center justify-between px-5">
           <Link
-            className="font-brand text-[30px] leading-none text-white no-underline transition-opacity duration-150 hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-4"
+            className={`font-brand text-[30px] leading-none no-underline transition-opacity duration-150 hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-4 ${isMenuOpen ? "text-white" : "text-[#302820]"}`}
             href={brandHref}
             aria-label={`${brand} home`}
             onClick={() => setIsMenuOpen(false)}
@@ -92,7 +92,7 @@ export function Navbar({
           </Link>
           <button
             type="button"
-            className="inline-flex size-11 items-center justify-center text-white transition-opacity duration-150 hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-2"
+            className={`inline-flex size-11 items-center justify-center transition-opacity duration-150 hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-2 ${isMenuOpen ? "text-white" : "text-[#302820]"}`}
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             aria-controls="mobile-menu-links"
             aria-expanded={isMenuOpen}

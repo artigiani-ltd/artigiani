@@ -1,3 +1,9 @@
+import { ArtHero } from "@/components/ArtHero";
+
 export default function Home() {
-  return <main />;
+  return (
+    <main>
+      <ArtHero />
+    </main>
+  );
 }
