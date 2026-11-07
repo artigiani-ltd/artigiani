@@ -60,12 +60,21 @@ body {
 .hero-caption {
   grid-area: 1 / 1;
   margin: 0;
+  color: #fff;
   opacity: 0;
-  animation: var(--caption-animation) var(--hero-duration) linear infinite;
+  animation: var(--caption-animation) var(--hero-duration) var(--scene-timing, linear) infinite;
 }
 
 .hero-caption span {
   display: block;
+}
+
+.hero-caption[data-scene="final"] {
+  font-size: clamp(1rem, 2.1vw, 2.5rem);
+}
+
+.hero-caption[data-scene="final"] span {
+  white-space: nowrap;
 }
 
 .hero-artwork {
@@ -74,6 +83,12 @@ body {
   grid-column: 2;
   grid-row: 1;
   align-self: start;
+  justify-self: end;
+  width: calc(100% - 80px);
+}
+
+.art-hero:not([data-selected]) .hero-artwork {
+  animation: hero-art-reveal 2.5s ease-out both;
 }
 
 .hero-art-scene {
@@ -83,7 +98,7 @@ body {
   align-items: center;
   transform-origin: top right;
   opacity: 0;
-  animation: var(--art-animation) var(--hero-duration) linear infinite;
+  animation: var(--art-animation) var(--hero-duration) ease-in-out infinite;
 }
 
 .hero-panel {
@@ -100,13 +115,15 @@ body {
 
 [data-scene="nature"] {
   --art-animation: hero-art-nature;
-  --caption-animation: hero-caption-nature;
+  --caption-animation: hero-scene-nature;
+  --scene-timing: steps(1, end);
   --progress-animation: hero-progress-nature;
 }
 
 [data-scene="final"] {
   --art-animation: hero-art-final;
-  --caption-animation: hero-caption-final;
+  --caption-animation: hero-scene-final;
+  --scene-timing: steps(1, end);
   --progress-animation: hero-progress-final;
 }
 
@@ -166,49 +183,53 @@ body {
 }
 
 .art-hero[data-ready="false"] .hero-caption,
+.art-hero[data-ready="false"] .hero-artwork,
 .art-hero[data-ready="false"] .hero-art-scene,
 .art-hero[data-ready="false"] .hero-progress {
   animation-play-state: paused;
 }
 
 /* All artwork, captions, and progress tracks share the reference's 24s clock. */
+/* The intro image fades in for 2.5s; its caption starts at 3s. */
+@keyframes hero-art-reveal {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Keep the outgoing layer opaque until the incoming image covers it. */
 @keyframes hero-art-intro {
-  0% { opacity: 0; transform: scale(1.015); }
-  6%, 26% { opacity: 1; transform: scale(1); }
-  31.25%, 100% { opacity: 0; transform: scale(1); }
+  0% { opacity: 1; animation-timing-function: step-end; }
+  33.75% { opacity: 0; animation-timing-function: step-end; }
+  95%, 100% { opacity: 1; }
 }
 
 @keyframes hero-art-nature {
-  0%, 30% { opacity: 0; transform: scale(1.015); }
-  35%, 53% { opacity: 1; transform: scale(1); }
-  59.375%, 100% { opacity: 0; transform: scale(1); }
+  0%, 28.75% { opacity: 0; }
+  33.75% { opacity: 1; animation-timing-function: step-end; }
+  61.875%, 100% { opacity: 0; }
 }
 
 @keyframes hero-art-final {
-  0%, 58% { opacity: 0; transform: scale(1.015); }
-  64%, 88% { opacity: 1; transform: scale(1); }
-  98%, 100% { opacity: 0; transform: scale(1); }
+  0%, 56.875% { opacity: 0; }
+  61.875%, 95% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes hero-scene-nature {
+  0% { opacity: 0; }
+  31.25% { opacity: 1; }
+  59.375%, 100% { opacity: 0; }
+}
+
+@keyframes hero-scene-final {
+  0% { opacity: 0; }
+  59.375%, 100% { opacity: 1; }
 }
 
 @keyframes hero-caption-intro {
-  0% { opacity: 0; filter: blur(6px); transform: translateY(10px); color: #8c7752; }
-  6% { opacity: 1; filter: blur(0); transform: translateY(0); color: #8c7752; }
-  17%, 26% { opacity: 1; filter: blur(0); transform: translateY(0); color: var(--foreground); }
-  31.25%, 100% { opacity: 0; filter: blur(6px); transform: translateY(-4px); }
-}
-
-@keyframes hero-caption-nature {
-  0%, 30% { opacity: 0; filter: blur(6px); transform: translateY(10px); color: #8c7752; }
-  35% { opacity: 1; filter: blur(0); transform: translateY(0); color: #8c7752; }
-  46%, 53% { opacity: 1; filter: blur(0); transform: translateY(0); color: var(--foreground); }
-  59.375%, 100% { opacity: 0; filter: blur(6px); transform: translateY(-4px); }
-}
-
-@keyframes hero-caption-final {
-  0%, 58% { opacity: 0; filter: blur(6px); transform: translateY(10px); color: #8c7752; }
-  64% { opacity: 1; filter: blur(0); transform: translateY(0); color: #8c7752; }
-  78%, 88% { opacity: 1; filter: blur(0); transform: translateY(0); color: var(--foreground); }
-  98%, 100% { opacity: 0; filter: blur(6px); transform: translateY(-4px); }
+  0%, 12.5% { opacity: 0; filter: blur(6px); transform: translateY(10px); }
+  18.5% { opacity: 1; filter: blur(0); transform: translateY(0); animation-timing-function: step-end; }
+  31.25%, 100% { opacity: 0; filter: blur(0); transform: translateY(0); }
 }
 
 @keyframes hero-progress-intro {
@@ -250,6 +271,10 @@ body {
     font-size: clamp(1.5rem, 6.5vw, 2.5rem);
   }
 
+  .hero-caption[data-scene="final"] {
+    font-size: clamp(0.875rem, 4.5vw, 2rem);
+  }
+
   .hero-controls {
     grid-column: 1;
   }
@@ -257,6 +282,7 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .art-hero:not([data-selected]) .hero-caption,
+  .art-hero:not([data-selected]) .hero-artwork,
   .art-hero:not([data-selected]) .hero-art-scene,
   .art-hero:not([data-selected]) .hero-progress {
     animation: none;
