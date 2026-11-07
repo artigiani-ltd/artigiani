@@ -3,6 +3,13 @@
 :root {
   --background: #000;
   --foreground: #f0ede6;
+  --navbar-height: 4rem;
+}
+
+@media (min-width: 40rem) {
+  :root {
+    --navbar-height: 3.875rem;
+  }
 }
 
 @theme inline {
@@ -20,8 +27,8 @@ body {
 
 .art-hero {
   --hero-duration: 24s;
-  --hero-inset: clamp(80px, 6vw, 120px);
   --hero-right-inset: clamp(24px, 3vw, 60px);
+  --hero-inset: calc(var(--navbar-height) + 1px + var(--hero-right-inset));
   position: relative;
   min-height: 100svh;
   overflow: clip;

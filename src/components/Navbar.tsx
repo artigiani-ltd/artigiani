@@ -58,9 +58,9 @@ export function Navbar({
   }, [isMenuOpen]);
 
   return (
-    <header className="absolute inset-x-0 top-0 z-10 min-h-16 bg-transparent sm:min-h-0">
+    <header className="absolute inset-x-0 top-0 z-10 min-h-(--navbar-height) border-b border-white/20 bg-transparent">
       <nav
-        className="hidden min-h-15.5 grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center px-8.5 sm:grid"
+        className="hidden min-h-(--navbar-height) grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center px-8.5 sm:grid"
         aria-label="Main navigation"
       >
         <Link
@@ -81,7 +81,7 @@ export function Navbar({
         className={`${isMenuOpen ? "fixed inset-0 z-50 min-h-dvh overflow-y-auto bg-[#171717]" : "relative"} sm:hidden`}
         aria-label="Mobile navigation"
       >
-        <div className="flex min-h-16 items-center justify-between px-5">
+        <div className="flex min-h-(--navbar-height) items-center justify-between px-5">
           <Link
             className="font-brand text-[30px] leading-none text-foreground no-underline transition-opacity duration-150 hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-4"
             href={brandHref}
