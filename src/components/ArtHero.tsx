@@ -73,17 +73,35 @@ export function ArtHero() {
       <div className="hero-composition">
         <div className="hero-copy">
           <div className="hero-captions" aria-hidden="true">
-            {scenes.map(({ id, lines }) => (
-              <p
-                key={`${id}-${playback.revision}`}
-                className="hero-caption"
-                data-scene={id}
-              >
-                {lines.map((line) => (
-                  <span key={line}>{line}</span>
-                ))}
-              </p>
-            ))}
+            {scenes.map(({ id, lines }) => {
+              let wordIndex = 0;
+
+              return (
+                <p
+                  key={`${id}-${playback.revision}`}
+                  className="hero-caption"
+                  data-scene={id}
+                >
+                  {lines.map((line) => (
+                    <span key={line} className="hero-caption-line">
+                      {line.split(" ").map((word, index) => (
+                        <span key={`${word}-${index}`}>
+                          {index > 0 ? " " : null}
+                          <span
+                            className="hero-caption-word"
+                            style={
+                              { "--word-index": wordIndex++ } as CSSProperties
+                            }
+                          >
+                            {word}
+                          </span>
+                        </span>
+                      ))}
+                    </span>
+                  ))}
+                </p>
+              );
+            })}
           </div>
         </div>
 
