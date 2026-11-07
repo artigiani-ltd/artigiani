@@ -26,7 +26,7 @@ function NavLinks({ links, className = "" }: NavLinksProps) {
       {links.map(({ label, href }) => (
         <li key={`${label}-${href}`}>
           <Link
-            className="inline-flex min-h-11 items-center font-sans text-xs leading-none font-semibold text-[#302820] uppercase no-underline transition-opacity duration-150 hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-4"
+            className="inline-flex min-h-11 items-center font-sans text-xs leading-none font-semibold text-foreground uppercase no-underline transition-opacity duration-150 hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-4"
             href={href}
           >
             {label}
@@ -64,7 +64,7 @@ export function Navbar({
         aria-label="Main navigation"
       >
         <Link
-          className="font-brand col-start-2 row-start-1 whitespace-nowrap text-[28px] leading-none text-[#302820] no-underline transition-opacity duration-150 hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-4"
+          className="font-brand col-start-2 row-start-1 whitespace-nowrap text-[28px] leading-none text-foreground no-underline transition-opacity duration-150 hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-4"
           href={brandHref}
           aria-label={`${brand} home`}
         >
@@ -83,7 +83,7 @@ export function Navbar({
       >
         <div className="flex min-h-16 items-center justify-between px-5">
           <Link
-            className={`font-brand text-[30px] leading-none no-underline transition-opacity duration-150 hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-4 ${isMenuOpen ? "text-white" : "text-[#302820]"}`}
+            className="font-brand text-[30px] leading-none text-foreground no-underline transition-opacity duration-150 hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-4"
             href={brandHref}
             aria-label={`${brand} home`}
             onClick={() => setIsMenuOpen(false)}
@@ -92,7 +92,7 @@ export function Navbar({
           </Link>
           <button
             type="button"
-            className={`inline-flex size-11 items-center justify-center transition-opacity duration-150 hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-2 ${isMenuOpen ? "text-white" : "text-[#302820]"}`}
+            className="inline-flex size-11 items-center justify-center text-foreground transition-opacity duration-150 hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-2"
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             aria-controls="mobile-menu-links"
             aria-expanded={isMenuOpen}

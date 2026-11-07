@@ -1,44 +1,65 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { type CSSProperties, useState } from "react";
 
+const heroDuration = 24;
+
+// Match the first fully visible caption of each scene in globals.css.
 const scenes = [
-  { id: "intro", lines: ["Artissimo 100"] },
-  { id: "nature", lines: ["Art inspired", "by nature"] },
+  {
+    id: "intro",
+    lines: ["Artissimo 100"],
+    start: 0.22,
+    image: { src: "/images/artwork-scene-1.png", width: 3799, height: 1853 },
+  },
+  {
+    id: "nature",
+    lines: ["Art inspired by nature"],
+    start: 0.5,
+    image: { src: "/images/artwork-scene-2.png", width: 3805, height: 1861 },
+  },
   {
     id: "final",
-    lines: ["An abstract", "and luxurious", "interpretation", "of nature"],
+    lines: ["An abstract and luxurious", "interpretation of nature"],
+    start: 0.72,
+    image: { src: "/images/artwork-scene-3.png", width: 3800, height: 1858 },
   },
 ] as const;
 
 type SceneId = (typeof scenes)[number]["id"];
 
 export function ArtHero() {
-  const [isPaused, setIsPaused] = useState(false);
-  const [selectedScene, setSelectedScene] = useState<SceneId | null>(null);
+  const [loadedScenes, setLoadedScenes] = useState<Record<SceneId, boolean>>({
+    intro: false,
+    nature: false,
+    final: false,
+  });
+  const [playback, setPlayback] = useState({
+    scene: null as (typeof scenes)[number] | null,
+    revision: 0,
+  });
 
-  function selectScene(scene: SceneId) {
-    setSelectedScene(scene);
-    setIsPaused(true);
+  function selectScene(scene: (typeof scenes)[number]) {
+    setPlayback((previous) => ({ scene, revision: previous.revision + 1 }));
   }
 
-  function togglePlayback() {
-    if (selectedScene) {
-      setSelectedScene(null);
-      setIsPaused(false);
-      return;
-    }
-
-    setIsPaused((paused) => !paused);
+  function finishLoadingScene(scene: SceneId) {
+    setLoadedScenes((previous) => ({ ...previous, [scene]: true }));
   }
 
   return (
     <section
       className="art-hero"
       aria-labelledby="hero-title"
-      data-paused={isPaused}
-      data-selected={selectedScene ?? undefined}
+      data-selected={playback.scene?.id}
+      data-ready={scenes.every(({ id }) => loadedScenes[id])}
+      style={
+        {
+          "--hero-duration": `${heroDuration}s`,
+          "--hero-delay": `${-heroDuration * (playback.scene?.start ?? 0)}s`,
+        } as CSSProperties
+      }
     >
       <h1 id="hero-title" className="sr-only">
         Artissimo 100 — art inspired by nature
@@ -53,64 +74,60 @@ export function ArtHero() {
         <div className="hero-copy">
           <div className="hero-captions" aria-hidden="true">
             {scenes.map(({ id, lines }) => (
-              <p key={id} className="hero-caption" data-scene={id}>
+              <p
+                key={`${id}-${playback.revision}`}
+                className="hero-caption"
+                data-scene={id}
+              >
                 {lines.map((line) => (
                   <span key={line}>{line}</span>
                 ))}
               </p>
             ))}
           </div>
-
-          <div className="hero-controls" role="group" aria-label="Artwork scenes">
-            {scenes.map(({ id, lines }, index) => (
-              <button
-                key={id}
-                type="button"
-                className="hero-scene-button"
-                aria-label={`Show scene ${index + 1}: ${lines.join(" ")}`}
-                aria-pressed={selectedScene === id}
-                onClick={() => selectScene(id)}
-              >
-                <span className="hero-track" aria-hidden="true">
-                  <span className="hero-progress" data-scene={id} />
-                </span>
-              </button>
-            ))}
-            <button
-              type="button"
-              className="hero-playback"
-              aria-label={isPaused ? "Play animation" : "Pause animation"}
-              onClick={togglePlayback}
-            >
-              <svg viewBox="0 0 20 20" aria-hidden="true">
-                {isPaused ? (
-                  <path d="m7 4 9 6-9 6Z" />
-                ) : (
-                  <path d="M6 4h2v12H6zM12 4h2v12h-2z" />
-                )}
-              </svg>
-            </button>
-          </div>
         </div>
 
-        <div className="hero-artwork" aria-hidden="true">
-          {scenes.map(({ id }) => (
+        <div
+          key={playback.revision}
+          className="hero-artwork"
+          aria-hidden="true"
+        >
+          {scenes.map(({ id, image }) => (
             <div key={id} className="hero-art-scene" data-scene={id}>
-              {(["left", "right"] as const).map((side) => (
-                <Image
-                  key={side}
-                  className="hero-panel"
-                  src={`/images/artissimo-${side}-hd.webp`}
-                  alt=""
-                  width={1254}
-                  height={1254}
-                  loading="eager"
-                  fetchPriority={id === "intro" ? "high" : "auto"}
-                  unoptimized
-                  draggable={false}
-                />
-              ))}
+              <Image
+                className="hero-panel"
+                src={image.src}
+                alt=""
+                width={image.width}
+                height={image.height}
+                loading="eager"
+                fetchPriority={id === "intro" ? "high" : "auto"}
+                unoptimized
+                draggable={false}
+                onLoad={() => finishLoadingScene(id)}
+                onError={() => finishLoadingScene(id)}
+              />
             </div>
+          ))}
+        </div>
+
+        <div className="hero-controls" role="group" aria-label="Artwork scenes">
+          {scenes.map((scene, index) => (
+            <button
+              key={scene.id}
+              type="button"
+              className="hero-scene-button"
+              aria-label={`Show scene ${index + 1}: ${scene.lines.join(" ")}`}
+              onClick={() => selectScene(scene)}
+            >
+              <span className="hero-track" aria-hidden="true">
+                <span
+                  key={playback.revision}
+                  className="hero-progress"
+                  data-scene={scene.id}
+                />
+              </span>
+            </button>
           ))}
         </div>
       </div>
