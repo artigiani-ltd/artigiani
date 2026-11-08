@@ -205,16 +205,7 @@ body {
   animation-delay: var(--hero-delay, 0s);
 }
 
-.art-hero[data-ready="false"] .hero-caption-word,
-.art-hero[data-ready="false"] .hero-artwork,
-.art-hero[data-ready="false"] .hero-art-scene,
-.art-hero[data-ready="false"] .hero-controls,
-.art-hero[data-ready="false"] .hero-progress {
-  animation-play-state: paused;
-}
-
-/* All artwork, captions, and progress tracks share the reference's 24s clock. */
-/* On the first pass, the intro image fades in for 5s and its caption starts at 3s. */
+/* Keep the 5s opening fade and 3s caption delay aligned with the shared 24s scene clock. */
 @keyframes hero-art-reveal {
   from { opacity: 0; }
   to { opacity: 1; }
