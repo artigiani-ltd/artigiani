@@ -1,4 +1,4 @@
-import { ArtHero } from "@/components/ArtHero";
+import { ArtHero } from "./_components/ArtHero";
 
 export default function Home() {
   return (

@@ -2,32 +2,13 @@
 
 import Image from "next/image";
 import { type CSSProperties, useState } from "react";
-
-const heroDuration = 24;
-
-// Match the first fully visible caption of each scene in globals.css.
-const scenes = [
-  {
-    id: "intro",
-    lines: ["Artissimo 100"],
-    start: 0.22,
-    image: { src: "/images/artwork-scene-1.png", width: 3799, height: 1853 },
-  },
-  {
-    id: "nature",
-    lines: ["Art inspired by nature"],
-    start: 0.5,
-    image: { src: "/images/artwork-scene-2.png", width: 3805, height: 1861 },
-  },
-  {
-    id: "final",
-    lines: ["An abstract and luxurious", "interpretation of nature"],
-    start: 0.72,
-    image: { src: "/images/artwork-scene-3.png", width: 3800, height: 1858 },
-  },
-] as const;
-
-type SceneId = (typeof scenes)[number]["id"];
+import {
+  heroDuration,
+  scenes,
+  type HeroScene,
+  type SceneId,
+} from "../constants/hero-scenes";
+import { HeroCaption } from "./HeroCaption";
 
 export function ArtHero() {
   const [loadedScenes, setLoadedScenes] = useState<Record<SceneId, boolean>>({
@@ -36,11 +17,11 @@ export function ArtHero() {
     final: false,
   });
   const [playback, setPlayback] = useState({
-    scene: null as (typeof scenes)[number] | null,
+    scene: null as HeroScene | null,
     revision: 0,
   });
 
-  function selectScene(scene: (typeof scenes)[number]) {
+  function selectScene(scene: HeroScene) {
     setPlayback((previous) => ({ scene, revision: previous.revision + 1 }));
   }
 
@@ -73,35 +54,13 @@ export function ArtHero() {
       <div className="hero-composition">
         <div className="hero-copy">
           <div className="hero-captions" aria-hidden="true">
-            {scenes.map(({ id, lines }) => {
-              let wordIndex = 0;
-
-              return (
-                <p
-                  key={`${id}-${playback.revision}`}
-                  className="hero-caption"
-                  data-scene={id}
-                >
-                  {lines.map((line) => (
-                    <span key={line} className="hero-caption-line">
-                      {line.split(" ").map((word, index) => (
-                        <span key={`${word}-${index}`}>
-                          {index > 0 ? " " : null}
-                          <span
-                            className="hero-caption-word"
-                            style={
-                              { "--word-index": wordIndex++ } as CSSProperties
-                            }
-                          >
-                            {word}
-                          </span>
-                        </span>
-                      ))}
-                    </span>
-                  ))}
-                </p>
-              );
-            })}
+            {scenes.map(({ id, lines }) => (
+              <HeroCaption
+                key={`${id}-${playback.revision}`}
+                sceneId={id}
+                lines={lines}
+              />
+            ))}
           </div>
         </div>
 
