@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { NavbarLink } from "./Navbar";
+import type { NavbarLink } from "./types/navbar";
 
 type NavLinksProps = {
   links: readonly NavbarLink[];

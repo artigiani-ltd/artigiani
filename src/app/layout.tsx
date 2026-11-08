@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Navbar, type NavbarLink } from "@/components/navigation/Navbar";
+import { Navbar } from "@/components/navigation/Navbar";
+import type { NavbarLink } from "@/components/navigation/types/navbar";
 import "./globals.css";
 
 const interDisplay = localFont({
