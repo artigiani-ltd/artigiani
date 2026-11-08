@@ -5,4 +5,6 @@
 - Extract components or helpers when reused, independently responsible, or needed for readability. Follow framework-required exports and file conventions.
 - Keep supporting code near its feature. Add hooks, utilities, or data folders only when needed; promote code to shared locations when multiple features use it.
 - Put extracted static definitions in the owning route's `constants` folder with descriptive filenames (for example, `src/app/constants/hero-scenes.ts`). Keep derived types alongside constants. Use descriptive folder names; underscores are optional for non-route folders.
+- Keep reusable types in a feature-local `types` folder so shared contracts have one home; keep component-specific props beside their components.
+- Keep comments to one line explaining non-obvious purpose or reasoning; omit comments when the code is self-explanatory.
 - Validate inputs at boundaries and handle expected errors explicitly.
