@@ -1,31 +1,8 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { interDisplay, beauRivage, editorial } from "./constants/fonts";
 import { Navbar } from "@/components/navigation/Navbar";
 import type { NavbarLink } from "@/components/navigation/types/navbar";
 import "./globals.css";
-
-const interDisplay = localFont({
-  src: [
-    { path: "../fonts/InterDisplay-Regular.woff2", weight: "400" },
-    { path: "../fonts/InterDisplay-SemiBold.woff2", weight: "600" },
-  ],
-  variable: "--font-inter-display",
-  display: "swap",
-});
-
-const beauRivage = localFont({
-  src: "../fonts/BeauRivage-Regular.ttf",
-  variable: "--font-beau-rivage",
-  display: "swap",
-});
-
-const editorial = localFont({
-  src: "../fonts/EBGaramond-Italic.ttf",
-  variable: "--font-editorial",
-  weight: "400",
-  style: "italic",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "Artigiani",

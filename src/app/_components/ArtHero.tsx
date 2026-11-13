@@ -32,8 +32,9 @@ export function ArtHero() {
               alt=""
               width={image.width}
               height={image.height}
-              loading="eager"
-              fetchPriority={id === "intro" ? "high" : "low"}
+              preload={id === "intro"}
+              loading={id === "intro" ? undefined : "eager"}
+              fetchPriority={id === "intro" ? undefined : "low"}
               sizes="(max-width: 767px) calc(100vw - 128px), 60vw"
               draggable={false}
             />
