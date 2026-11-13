@@ -1,0 +1,103 @@
+import type { CollectionArtwork } from "../types/artwork";
+
+export const collectionDesigns = [
+  {
+    image: "wave-design",
+    title: "Wave Design",
+    description: "Natural seasoned wood with metallic accents, bespoke sizing.",
+    layout: "md:col-span-4",
+    sizes: "(min-width: 768px) 95vw, (min-width: 640px) 46vw, 88vw",
+    ratio: "aspect-[2.7/1]",
+  },
+  {
+    image: "wave-cluster-design",
+    title: "Wave Cluster Design",
+    description: "Modular acoustic composition.",
+    layout: "",
+    sizes: "(min-width: 768px) 23vw, (min-width: 640px) 46vw, 88vw",
+    ratio: "aspect-[4/5]",
+  },
+  {
+    image: "flower-design",
+    title: "Flower Design",
+    description: "Hand-finished Italian timber, custom diameter.",
+    layout: "",
+    sizes: "(min-width: 768px) 23vw, (min-width: 640px) 46vw, 88vw",
+    ratio: "aspect-[4/5]",
+  },
+  {
+    image: "rain-drops-design",
+    title: "Rain Drops Design",
+    description: "Seasoned light oak, organic modular sculpture.",
+    layout: "md:col-span-2",
+    sizes: "(min-width: 640px) 47vw, 88vw",
+    ratio: "aspect-[8/5]",
+  },
+  {
+    image: "rain-drops-pair",
+    title: "Rain Drops Pair",
+    description: "Natural Italian walnut and polished metallic contours.",
+    layout: "md:col-span-3",
+    sizes: "(min-width: 768px) 71vw, (min-width: 640px) 46vw, 88vw",
+    ratio: "aspect-[2.4/1]",
+  },
+  {
+    image: "flower-dining-feature",
+    title: "Flower Dining Feature",
+    description: "Bespoke dark timber finish, interior application.",
+    layout: "",
+    sizes: "(min-width: 768px) 23vw, (min-width: 640px) 46vw, 88vw",
+    ratio: "aspect-[4/5]",
+  },
+] as const satisfies readonly CollectionArtwork[];
+
+export const collectionInstallations = [
+  {
+    image: "bedroom-side",
+    title: "Artissimo 100 — Master Suite Wall",
+    description: "Multi-panel headboard installation & floral accent mirror.",
+    layout: "md:col-span-2",
+    sizes: "(min-width: 640px) 47vw, 88vw",
+    ratio: "aspect-[3/2]",
+  },
+  {
+    image: "bedroom-front",
+    title: "Artissimo 100 — Symmetrical Wave Headboard",
+    description: "Dual bespoke wave panels in custom acoustic configuration.",
+    layout: "md:col-span-2",
+    sizes: "(min-width: 640px) 47vw, 88vw",
+    ratio: "aspect-[3/2]",
+  },
+  {
+    image: "reception-side",
+    title: "Hotel Reception Installation",
+    description: "Vertical wave sculpture in gold-leaf timber.",
+    layout: "",
+    sizes: "(min-width: 768px) 23vw, (min-width: 640px) 46vw, 88vw",
+    ratio: "aspect-[3/4]",
+  },
+  {
+    image: "living-room",
+    title: "Living Room",
+    description: "Paired wave and floral panels in warm Italian walnut.",
+    layout: "",
+    sizes: "(min-width: 768px) 23vw, (min-width: 640px) 46vw, 88vw",
+    ratio: "aspect-[3/4]",
+  },
+  {
+    image: "flower-mirror",
+    title: "Flower Accent Mirror",
+    description: "Wooden frame with integrated vanity mirror.",
+    layout: "",
+    sizes: "(min-width: 768px) 23vw, (min-width: 640px) 46vw, 88vw",
+    ratio: "aspect-[3/4]",
+  },
+  {
+    image: "living-room",
+    title: "Private Residence Feature Wall",
+    description: "Triptych wave panels in a residential setting.",
+    layout: "",
+    sizes: "(min-width: 768px) 23vw, (min-width: 640px) 46vw, 88vw",
+    ratio: "aspect-[3/4]",
+  },
+] as const satisfies readonly CollectionArtwork[];

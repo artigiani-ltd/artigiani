@@ -1,54 +1,20 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
-import { Navbar, type NavbarLink } from "@/components/Navbar";
+import { interDisplay, beauRivage, editorial } from "./constants/fonts";
+import { Navbar } from "@/components/navigation/Navbar";
+import { leftLinks, rightLinks } from "@/components/navigation/constants/navigation";
+import { siteMetadata } from "./constants/site-metadata";
 import "./globals.css";
 
-const interDisplay = localFont({
-  src: [
-    { path: "../fonts/InterDisplay-Regular.woff2", weight: "400" },
-    { path: "../fonts/InterDisplay-SemiBold.woff2", weight: "600" },
-  ],
-  variable: "--font-inter-display",
-  display: "swap",
-});
-
-const beauRivage = localFont({
-  src: "../fonts/BeauRivage-Regular.ttf",
-  variable: "--font-beau-rivage",
-  display: "swap",
-});
-
-const editorial = localFont({
-  src: "../fonts/EBGaramond-Italic.ttf",
-  variable: "--font-editorial",
-  weight: "400",
-  style: "italic",
-  display: "swap",
-});
-
-export const metadata: Metadata = {
-  title: "Artigiani",
-  description: "Artigiani",
-};
-
-const leftLinks: readonly NavbarLink[] = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Gallery", href: "/gallery" },
-];
-
-const rightLinks: readonly NavbarLink[] = [
-  { label: "Products", href: "/products" },
-  { label: "Contact", href: "/contact" },
-];
+export const metadata: Metadata = siteMetadata;
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${interDisplay.variable} ${beauRivage.variable} ${editorial.variable}`}
+      className={`${interDisplay.variable} ${beauRivage.variable} ${editorial.variable} scroll-pt-[calc(var(--navbar-height)+1.5rem)]`}
     >
       <body>
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:bg-white focus:p-3 focus:text-black">Skip to content</a>
         <div className="relative min-h-screen bg-background">
           <Navbar brand="Artigiani" leftLinks={leftLinks} rightLinks={rightLinks} />
           {children}

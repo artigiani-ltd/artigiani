@@ -1,26 +1,30 @@
 # Artigiani repository rules
 
-Artigiani is a Next.js App Router project using React, TypeScript, and Tailwind CSS. The current application is an early frontend with a shared navbar and an empty home page. Confirm product requirements before introducing new pages, data models, services, or dependencies.
+Artigiani uses Next.js App Router, React, TypeScript, and Tailwind CSS. Use `pnpm` for project commands.
 
-## Code and scope
+## Always apply
 
-- Prefer clear, maintainable code that junior and mid-level developers can follow.
-- Keep functions focused, use descriptive names, and avoid unnecessary abstraction or duplication.
-- Follow the existing architecture and conventions. Put routes and layouts in `src/app` and shared UI in `src/components`.
-- Use strict TypeScript types, avoid `any`, validate inputs, and handle errors explicitly.
-- Change only files relevant to the task. Add comments only for reasoning or constraints that are not evident from the code.
-- Ask for clarification when a requirement materially affects the implementation and cannot be inferred from the repository or conversation.
-- Explain material tradeoffs briefly when reporting changes.
+- Keep changes focused; preserve existing architecture, conventions, and unrelated work.
+- Prefer readable names, focused functions, and strict types. Avoid `any`, duplication, and unnecessary abstraction. Comment only on non-obvious reasoning or constraints.
+- Confirm product requirements before adding pages, data models, services, or dependencies unless already established by the request. Ask only when material requirements cannot be inferred.
+- Report changes, checks, material tradeoffs, and remaining limitations.
 
-## Verification
+## Read when relevant
 
-- Use `pnpm` for project commands. `pnpm lint` runs ESLint, and `pnpm build` checks the production build.
-- Run checks relevant to the changed code. For completed application changes, run both commands when practical.
-- Report what changed, what was checked, and any remaining limitations.
+Before the relevant work, read and follow the matching files below. These files are not automatically loaded; do not read the whole folder. Multiple rules can apply.
 
-## Agent team
+| Task | Rules |
+| --- | --- |
+| Write, refactor, or review application code | [.agents/rules/code.md](.agents/rules/code.md) |
+| Change or review UI markup, styling, or interactions | [.agents/rules/styling.md](.agents/rules/styling.md) |
+| Plan checks, review changes, or verify completed edits | [.agents/rules/verification.md](.agents/rules/verification.md) |
+| User invokes `@commit` or requests splitting changes into commits | [.agents/skills/commit/SKILL.md](.agents/skills/commit/SKILL.md) |
+| User invokes `@ui-design` or requests interface design or polish | [.agents/skills/ui-design/SKILL.md](.agents/skills/ui-design/SKILL.md) |
+| User invokes `@performance` or requests performance optimization | [.agents/skills/performance/SKILL.md](.agents/skills/performance/SKILL.md) |
+| User invokes `@review` or requests a code or regression review | [.agents/skills/review/SKILL.md](.agents/skills/review/SKILL.md) |
+| Delegate work or coordinate agents | [.agents/team.md](.agents/team.md), then only assigned role files |
 
-For team roles and coordination, read `.agents/team.md` before planning or delegating project work.
+Keep universal constraints here. Add task-specific rules under `.agents/rules/` with a matching trigger above; maintain each rule in one place. Avoid volatile project-status descriptions.
 
 <!-- BEGIN:nextjs-agent-rules -->
 
