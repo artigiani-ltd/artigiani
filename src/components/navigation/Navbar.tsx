@@ -17,7 +17,7 @@ export function Navbar({
   rightLinks,
 }: NavbarProps) {
   return (
-    <header className="absolute inset-x-0 top-0 z-10 min-h-(--navbar-height) border-b border-white/20 bg-transparent">
+    <header className="fixed inset-x-0 top-0 z-50 min-h-(--navbar-height) border-b border-white/20 bg-black/85 backdrop-blur-md">
       <nav
         className="hidden min-h-(--navbar-height) grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center px-8.5 sm:grid"
         aria-label="Main navigation"

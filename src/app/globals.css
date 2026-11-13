@@ -1,5 +1,49 @@
 @import "tailwindcss";
 
+.collection-heading {
+  font-family: var(--font-collection), Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.035em;
+}
+
+[data-reveal][data-motion] {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 900ms ease, transform 1100ms cubic-bezier(0.2, 0.65, 0.3, 1);
+}
+
+[data-reveal="image"][data-motion] img {
+  transform: scale(1.06);
+  transition: transform 1600ms cubic-bezier(0.2, 0.65, 0.3, 1);
+}
+
+[data-reveal][data-motion][data-visible] {
+  opacity: 1;
+  transform: none;
+}
+
+[data-reveal][data-motion]:nth-child(2),
+figure:nth-child(2n) > [data-reveal][data-motion] {
+  transition-delay: 100ms;
+}
+
+figure:nth-child(3n) > [data-reveal][data-motion] {
+  transition-delay: 180ms;
+}
+
+[data-reveal="image"][data-visible] img {
+  transform: scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal][data-motion],
+  [data-reveal="image"][data-motion] img {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 :root {
   --background: #000;
   --foreground: #f0ede6;
