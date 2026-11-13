@@ -8,6 +8,7 @@ type HeroPlaybackProps = {
 };
 
 export function HeroPlayback({ children }: HeroPlaybackProps) {
+  const [isPaused, setIsPaused] = useState(false);
   const [playback, setPlayback] = useState<{
     scene: HeroScene | null;
     revision: number;
@@ -22,6 +23,7 @@ export function HeroPlayback({ children }: HeroPlaybackProps) {
       className="art-hero"
       aria-labelledby="hero-title"
       data-selected={playback.scene?.id}
+      data-paused={isPaused || undefined}
       style={
         {
           "--hero-duration": `${heroDuration}s`,
@@ -32,6 +34,15 @@ export function HeroPlayback({ children }: HeroPlaybackProps) {
       <div className="hero-composition">
         <Fragment key={playback.revision}>{children}</Fragment>
         <div className="hero-controls" role="group" aria-label="Artwork scenes">
+          <button
+            type="button"
+            className="hero-scene-button text-xs"
+            aria-label={isPaused ? "Play artwork animation" : "Pause artwork animation"}
+            aria-pressed={isPaused}
+            onClick={() => setIsPaused((paused) => !paused)}
+          >
+            <span aria-hidden="true">{isPaused ? "▶" : "Ⅱ"}</span>
+          </button>
           {scenes.map((scene, index) => (
             <button
               key={scene.id}

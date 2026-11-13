@@ -347,18 +347,30 @@ body {
   }
 }
 
+.art-hero[data-paused] * {
+  animation-play-state: paused;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .art-hero:not([data-selected]) .hero-caption-word,
-  .art-hero:not([data-selected]) .hero-artwork,
-  .art-hero:not([data-selected]) .hero-art-scene,
-  .art-hero:not([data-selected]) .hero-controls,
-  .art-hero:not([data-selected]) .hero-progress {
-    animation: none;
+  .art-hero .hero-caption-word,
+  .art-hero .hero-artwork,
+  .art-hero .hero-art-scene,
+  .art-hero .hero-controls,
+  .art-hero .hero-progress {
+    animation: none !important;
+  }
+
+  .art-hero [data-scene] {
+    opacity: 0;
   }
 
   .art-hero:not([data-selected]) [data-scene="final"],
-  .art-hero:not([data-selected]) [data-scene="final"] .hero-caption-word {
+  .art-hero[data-selected="intro"] [data-scene="intro"],
+  .art-hero[data-selected="nature"] [data-scene="nature"],
+  .art-hero[data-selected="final"] [data-scene="final"],
+  .art-hero .hero-caption-word {
     opacity: 1;
     transform: none;
+    filter: none;
   }
 }

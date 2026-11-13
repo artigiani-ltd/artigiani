@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import type { NavbarLink } from "./types/navbar";
 
@@ -11,21 +11,52 @@ type MobileNavbarProps = {
 };
 
 export function MobileNavbar({ brand, brandHref, links }: MobileNavbarProps) {
+  const navigationRef = useRef<HTMLElement>(null);
+  const toggleRef = useRef<HTMLButtonElement>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     if (!isMenuOpen) return;
 
-    function closeOnEscape(event: KeyboardEvent) {
-      if (event.key === "Escape") setIsMenuOpen(false);
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const desktop = window.matchMedia("(min-width: 640px)");
+
+    function closeOnDesktop() {
+      if (desktop.matches) setIsMenuOpen(false);
     }
 
-    window.addEventListener("keydown", closeOnEscape);
-    return () => window.removeEventListener("keydown", closeOnEscape);
+    function handleKeyboard(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setIsMenuOpen(false);
+        toggleRef.current?.focus();
+      }
+      if (event.key !== "Tab") return;
+      const controls = navigationRef.current?.querySelectorAll<HTMLElement>("a[href], button");
+      const first = controls?.[0];
+      const last = controls?.[controls.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last?.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first?.focus();
+      }
+    }
+
+    closeOnDesktop();
+    desktop.addEventListener("change", closeOnDesktop);
+    window.addEventListener("keydown", handleKeyboard);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      desktop.removeEventListener("change", closeOnDesktop);
+      window.removeEventListener("keydown", handleKeyboard);
+    };
   }, [isMenuOpen]);
 
   return (
     <nav
+      ref={navigationRef}
       className={`${isMenuOpen ? "fixed inset-0 z-50 min-h-dvh overflow-y-auto bg-[#171717]" : "relative"} sm:hidden`}
       aria-label="Mobile navigation"
     >
@@ -39,6 +70,7 @@ export function MobileNavbar({ brand, brandHref, links }: MobileNavbarProps) {
           {brand}
         </Link>
         <button
+          ref={toggleRef}
           type="button"
           className="inline-flex size-11 items-center justify-center text-foreground transition-opacity duration-150 hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-2"
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
