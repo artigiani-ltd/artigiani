@@ -18,6 +18,10 @@ Before the relevant work, read and follow the matching files below. These files 
 | Write, refactor, or review application code | [.agents/rules/code.md](.agents/rules/code.md) |
 | Change or review UI markup, styling, or interactions | [.agents/rules/styling.md](.agents/rules/styling.md) |
 | Plan checks, review changes, or verify completed edits | [.agents/rules/verification.md](.agents/rules/verification.md) |
+| User invokes `@commit` or requests splitting changes into commits | [.agents/skills/commit/SKILL.md](.agents/skills/commit/SKILL.md) |
+| User invokes `@ui-design` or requests interface design or polish | [.agents/skills/ui-design/SKILL.md](.agents/skills/ui-design/SKILL.md) |
+| User invokes `@performance` or requests performance optimization | [.agents/skills/performance/SKILL.md](.agents/skills/performance/SKILL.md) |
+| User invokes `@review` or requests a code or regression review | [.agents/skills/review/SKILL.md](.agents/skills/review/SKILL.md) |
 | Delegate work or coordinate agents | [.agents/team.md](.agents/team.md), then only assigned role files |
 
 Keep universal constraints here. Add task-specific rules under `.agents/rules/` with a matching trigger above; maintain each rule in one place. Avoid volatile project-status descriptions.
