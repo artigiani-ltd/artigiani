@@ -1,6 +1,21 @@
 # Hero artwork
 
-The hero uses two enhanced still images, each 1,254 × 1,254 pixels:
+## Current sequence
+
+The hero renders three full-composition PNG scenes through `next/image`:
+
+- `public/images/artwork-scene-1.png` — monochrome introduction.
+- `public/images/artwork-scene-2.png` — nature scene.
+- `public/images/artwork-scene-3.png` — final color composition.
+
+Dimensions, captions, and scene timing are defined in
+`src/app/constants/hero-scenes.ts`. CSS controls the opening fade and looping
+transitions. Responsive image optimization requires a Next.js-compatible server.
+
+## Earlier enhanced panels
+
+The following retained assets are not used by the current hero. Each is
+1,254 × 1,254 pixels:
 
 - `public/images/artissimo-left-hd.webp`
 - `public/images/artissimo-right-hd.webp`
@@ -12,9 +27,8 @@ enhanced each panel separately, and the results were encoded as WebP at quality
 should not be treated as an exact record of the physical artwork. Original
 high-resolution product photographs remain the best source for exact fidelity.
 
-The same two assets appear throughout the sequence. CSS supplies the monochrome
-and muted-color treatments, and all transitions are coded in the frontend. No
-video or duplicate monochrome images are shipped.
+The earlier sequence reused these two panels with CSS color treatments. The
+current sequence uses the separate scene assets listed above; no video is shipped.
 
 ## Enhancement prompt
 
