@@ -1,3 +1,4 @@
+import { OrganizationStructuredData } from "./_components/OrganizationStructuredData";
 import { ArtHero } from "./_components/ArtHero";
 import { NatureInterior } from "./_components/NatureInterior";
 import { collectionHeading } from "./constants/fonts";
@@ -10,6 +11,7 @@ import { AtelierFooter } from "./_components/AtelierFooter";
 export default function Home() {
   return (
     <div className={collectionHeading.variable}>
+      <OrganizationStructuredData />
       <ScrollReveal>
         <main id="main-content">
           <ArtHero />
