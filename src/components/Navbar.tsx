@@ -26,7 +26,7 @@ function NavLinks({ links, className = "" }: NavLinksProps) {
       {links.map(({ label, href }) => (
         <li key={`${label}-${href}`}>
           <Link
-            className="inline-flex min-h-11 items-center font-sans text-xs leading-none font-semibold text-foreground uppercase no-underline transition-opacity duration-150 hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-4"
+            className="inline-flex min-h-11 items-center font-sans text-xs leading-none font-normal tracking-[0.12em] text-foreground uppercase no-underline transition-opacity duration-250 hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-4"
             href={href}
           >
             {label}
@@ -58,7 +58,7 @@ export function Navbar({
   }, [isMenuOpen]);
 
   return (
-    <header className="absolute inset-x-0 top-0 z-10 min-h-(--navbar-height) border-b border-white/20 bg-transparent">
+    <header className="absolute inset-x-0 top-0 z-10 min-h-(--navbar-height) border-b border-foreground/10 bg-transparent">
       <nav
         className="hidden min-h-(--navbar-height) grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center px-8.5 sm:grid"
         aria-label="Main navigation"
@@ -124,7 +124,7 @@ export function Navbar({
           {links.map(({ label, href }) => (
             <li key={`${label}-${href}`}>
               <Link
-                className="inline-flex min-h-12 items-center font-serif text-[clamp(2rem,9vw,2.75rem)] leading-none text-white uppercase no-underline transition-opacity duration-150 hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-4"
+                className="inline-flex min-h-12 items-center font-serif text-[clamp(2rem,9vw,2.75rem)] leading-none font-normal tracking-[0.04em] text-foreground uppercase no-underline transition-opacity duration-250 hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-4"
                 href={href}
                 onClick={() => setIsMenuOpen(false)}
               >

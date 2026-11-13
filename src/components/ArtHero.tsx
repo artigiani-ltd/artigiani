@@ -135,15 +135,16 @@ export function ArtHero() {
               key={scene.id}
               type="button"
               className="hero-scene-button"
+              data-scene={scene.id}
               aria-label={`Show scene ${index + 1}: ${scene.lines.join(" ")}`}
               onClick={() => selectScene(scene)}
             >
-              <span className="hero-track" aria-hidden="true">
-                <span
-                  key={playback.revision}
-                  className="hero-progress"
-                  data-scene={scene.id}
-                />
+              <span
+                key={playback.revision}
+                className="hero-scene-number"
+                aria-hidden="true"
+              >
+                {String(index + 1).padStart(2, "0")}
               </span>
             </button>
           ))}
