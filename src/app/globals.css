@@ -268,12 +268,12 @@ body {
   animation-delay: var(--hero-delay, 0s);
 }
 
-.art-hero[data-ready="false"] .hero-caption-word,
-.art-hero[data-ready="false"] .hero-artwork,
-.art-hero[data-ready="false"] .hero-art-scene,
-.art-hero[data-ready="false"] .hero-controls,
-.art-hero[data-ready="false"] .hero-scene-number,
-.art-hero[data-ready="false"] .hero-scene-number::after {
+.art-hero[data-paused] .hero-caption-word,
+.art-hero[data-paused] .hero-artwork,
+.art-hero[data-paused] .hero-art-scene,
+.art-hero[data-paused] .hero-controls,
+.art-hero[data-paused] .hero-scene-number,
+.art-hero[data-paused] .hero-scene-number::after {
   animation-play-state: paused;
 }
 
@@ -495,24 +495,38 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .art-hero:not([data-selected]) .hero-caption-word,
+  .art-hero .hero-caption-word,
+  .art-hero .hero-artwork,
   .art-hero:not([data-selected]) .hero-artwork,
-  .art-hero:not([data-selected]) .hero-art-scene,
+  .art-hero .hero-art-scene,
+  .art-hero .hero-controls,
   .art-hero:not([data-selected]) .hero-controls,
-  .art-hero:not([data-selected]) .hero-scene-number,
-  .art-hero:not([data-selected]) .hero-scene-number::after {
+  .art-hero .hero-scene-number,
+  .art-hero .hero-scene-number::after {
     animation: none;
     transition: none;
   }
 
+  .art-hero [data-scene] {
+    --static-scene-opacity: 0;
+  }
+
   .art-hero:not([data-selected]) [data-scene="final"],
-  .art-hero:not([data-selected]) [data-scene="final"] .hero-caption-word,
-  .art-hero:not([data-selected]) [data-scene="final"] .hero-scene-number,
-  .art-hero:not([data-selected])
-    [data-scene="final"]
-    .hero-scene-number::after {
-    opacity: 1;
+  .art-hero[data-selected="intro"] [data-scene="intro"],
+  .art-hero[data-selected="nature"] [data-scene="nature"],
+  .art-hero[data-selected="final"] [data-scene="final"] {
+    --static-scene-opacity: 1;
+  }
+
+  .art-hero .hero-art-scene,
+  .art-hero .hero-caption-word,
+  .art-hero .hero-scene-number::after {
+    opacity: var(--static-scene-opacity);
     transform: none;
     filter: none;
+  }
+
+  .art-hero .hero-scene-number {
+    opacity: max(0.55, var(--static-scene-opacity));
   }
 }

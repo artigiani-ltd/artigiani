@@ -36,7 +36,7 @@ export function HeroPlayback({ children }: HeroPlaybackProps) {
         <div className="hero-controls" role="group" aria-label="Artwork scenes">
           <button
             type="button"
-            className="hero-scene-button text-xs"
+            className="hero-scene-button text-xs motion-reduce:hidden"
             aria-label={
               isPaused ? "Play artwork animation" : "Pause artwork animation"
             }
@@ -53,12 +53,13 @@ export function HeroPlayback({ children }: HeroPlaybackProps) {
               aria-label={`Show scene ${index + 1}: ${scene.lines.join(" ")}`}
               onClick={() => selectScene(scene)}
             >
-              <span className="hero-track" aria-hidden="true">
-                <span
-                  key={playback.revision}
-                  className="hero-progress"
-                  data-scene={scene.id}
-                />
+              <span
+                key={playback.revision}
+                className="hero-scene-number"
+                data-scene={scene.id}
+                aria-hidden="true"
+              >
+                {String(index + 1).padStart(2, "0")}
               </span>
             </button>
           ))}
