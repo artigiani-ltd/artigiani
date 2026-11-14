@@ -10,9 +10,9 @@ export function ArtHero() {
         Artissimo 100 — art inspired by nature
       </h1>
       <p className="sr-only">
-        An abstract and luxurious interpretation of nature. Two framed sculptural
-        reliefs with flowing wood grain and blue accents, shown in monochrome and
-        natural color.
+        An abstract and luxurious interpretation of nature. Two framed
+        sculptural reliefs with flowing wood grain and blue accents, shown in
+        monochrome and natural color.
       </p>
 
       <div className="hero-copy">

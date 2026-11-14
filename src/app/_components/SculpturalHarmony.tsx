@@ -15,12 +15,15 @@ export function SculpturalHarmony() {
         >
           Sculptural Harmony
         </h2>
-        <p data-reveal className="text-base leading-[1.6] text-neutral-600 lg:text-[1.3vw]">
+        <p
+          data-reveal
+          className="text-base leading-[1.6] text-neutral-600 lg:text-[1.3vw]"
+        >
           Founded by architect and artist <strong>Janan Khammo</strong>,{" "}
           <strong>Artigiani</strong> operates at the intersection of sculpture,
-          design, and interior architecture. Based in Valdagno (Vicenza), Italy, we
-          design and handcraft bespoke sculptural wall installations and modular
-          panels.
+          design, and interior architecture. Based in Valdagno (Vicenza), Italy,
+          we design and handcraft bespoke sculptural wall installations and
+          modular panels.
         </p>
       </div>
       <div className="grid items-start gap-12 md:grid-cols-2 md:gap-[2.7vw]">
@@ -32,7 +35,9 @@ export function SculpturalHarmony() {
           />
           <div data-reveal className="mt-12 md:mt-[13vw]">
             <h3 className="collection-heading text-[clamp(2.5rem,4.2vw,5rem)] leading-[1.25] uppercase">
-              Book an<br />appointment
+              Book an
+              <br />
+              appointment
             </h3>
             <a
               href="mailto:info@artigiani.design?subject=Private%20studio%20consultation"
@@ -54,8 +59,12 @@ export function SculpturalHarmony() {
                 data-reveal
                 className="flex min-h-24 items-center justify-between gap-6 border-b border-neutral-300 py-5 first:pt-0 md:min-h-[7vw] md:py-[1.6vw]"
               >
-                <dt className="order-2 text-right text-xs uppercase lg:text-[1.2vw]">{label}</dt>
-                <dd className="text-4xl font-semibold tracking-tighter lg:text-[3.1vw]">{value}</dd>
+                <dt className="order-2 text-right text-xs uppercase lg:text-[1.2vw]">
+                  {label}
+                </dt>
+                <dd className="text-4xl font-semibold tracking-tighter lg:text-[3.1vw]">
+                  {value}
+                </dd>
               </div>
             ))}
           </dl>
@@ -76,7 +85,9 @@ export function SculpturalHarmony() {
                 />
               </div>
               <div data-reveal className="mt-8 text-right md:mt-[7.5vw]">
-                <h3 className="text-sm font-semibold uppercase lg:text-[1.3vw]">Valdagno, Italy</h3>
+                <h3 className="text-sm font-semibold uppercase lg:text-[1.3vw]">
+                  Valdagno, Italy
+                </h3>
                 <p className="mt-4 text-sm leading-relaxed text-neutral-500 lg:text-[1.2vw]">
                   Experience the tactile warmth of seasoned timber and sculpted
                   stone in person. Schedule a private consultation to discuss

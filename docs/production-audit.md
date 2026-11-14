@@ -28,15 +28,15 @@ fully production ready.
 
 The final isolated run against `next start` using Lighthouse 12.8.2 reported:
 
-| Category / metric | Result |
-| --- | --- |
-| Performance | 69 / 100 |
-| Accessibility | 96 / 100 |
-| Best practices | 100 / 100 |
-| SEO | 100 / 100 |
-| Largest Contentful Paint | 7.3 seconds |
-| Total Blocking Time | 270 milliseconds |
-| Cumulative Layout Shift | 0 |
+| Category / metric        | Result           |
+| ------------------------ | ---------------- |
+| Performance              | 69 / 100         |
+| Accessibility            | 96 / 100         |
+| Best practices           | 100 / 100        |
+| SEO                      | 100 / 100        |
+| Largest Contentful Paint | 7.3 seconds      |
+| Total Blocking Time      | 270 milliseconds |
+| Cumulative Layout Shift  | 0                |
 
 These are local simulated results, not field Core Web Vitals or a guarantee of
 search rankings. Lighthouse sampled low text contrast during an animated caption

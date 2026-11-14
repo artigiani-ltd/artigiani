@@ -6,7 +6,8 @@ const organization = {
   name: "Artigiani",
   url: siteUrl.href,
   email: "info@artigiani.design",
-  description: "Bespoke Italian sculptural wall art and modular panels inspired by nature.",
+  description:
+    "Bespoke Italian sculptural wall art and modular panels inspired by nature.",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Piazza Roma 4",

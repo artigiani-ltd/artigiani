@@ -37,7 +37,9 @@ export function HeroPlayback({ children }: HeroPlaybackProps) {
           <button
             type="button"
             className="hero-scene-button text-xs"
-            aria-label={isPaused ? "Play artwork animation" : "Pause artwork animation"}
+            aria-label={
+              isPaused ? "Play artwork animation" : "Pause artwork animation"
+            }
             aria-pressed={isPaused}
             onClick={() => setIsPaused((paused) => !paused)}
           >

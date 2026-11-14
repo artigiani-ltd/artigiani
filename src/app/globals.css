@@ -9,7 +9,9 @@
 [data-reveal][data-motion] {
   opacity: 0;
   transform: translateY(32px);
-  transition: opacity 900ms ease, transform 1100ms cubic-bezier(0.2, 0.65, 0.3, 1);
+  transition:
+    opacity 900ms ease,
+    transform 1100ms cubic-bezier(0.2, 0.65, 0.3, 1);
 }
 
 [data-reveal="image"][data-motion] img {
@@ -140,7 +142,9 @@ body {
   animation-iteration-count: 1, infinite;
   animation-delay:
     calc(var(--hero-delay, 0s) + var(--word-index) * 0.12s),
-    calc(var(--hero-delay, 0s) + var(--hero-duration) + var(--word-index) * 0.12s);
+    calc(
+      var(--hero-delay, 0s) + var(--hero-duration) + var(--word-index) * 0.12s
+    );
 }
 
 .hero-artwork {
@@ -201,7 +205,8 @@ body {
 }
 
 .art-hero:not([data-selected]) .hero-controls {
-  animation: hero-controls-reveal 0.8s ease-out var(--hero-opening-duration) both;
+  animation: hero-controls-reveal 0.8s ease-out var(--hero-opening-duration)
+    both;
 }
 
 .hero-scene-button {
@@ -251,74 +256,191 @@ body {
 
 /* Keep the 5s opening fade and 3s caption delay aligned with the shared 24s scene clock. */
 @keyframes hero-art-reveal {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes hero-controls-reveal {
-  from { opacity: 0; visibility: hidden; }
-  to { opacity: 1; visibility: visible; }
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
 /* Keep the outgoing layer opaque until the incoming image covers it. */
 @keyframes hero-art-intro {
-  0% { opacity: 1; animation-timing-function: step-end; }
-  33.75% { opacity: 0; animation-timing-function: step-end; }
-  95%, 100% { opacity: 1; }
+  0% {
+    opacity: 1;
+    animation-timing-function: step-end;
+  }
+  33.75% {
+    opacity: 0;
+    animation-timing-function: step-end;
+  }
+  95%,
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes hero-art-nature {
-  0%, 28.75% { opacity: 0; }
-  33.75% { opacity: 1; animation-timing-function: step-end; }
-  61.875%, 100% { opacity: 0; }
+  0%,
+  28.75% {
+    opacity: 0;
+  }
+  33.75% {
+    opacity: 1;
+    animation-timing-function: step-end;
+  }
+  61.875%,
+  100% {
+    opacity: 0;
+  }
 }
 
 @keyframes hero-art-final {
-  0%, 56.875% { opacity: 0; }
-  61.875%, 95% { opacity: 1; }
-  100% { opacity: 0; }
+  0%,
+  56.875% {
+    opacity: 0;
+  }
+  61.875%,
+  95% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 @keyframes hero-caption-nature {
-  0%, 31.25% { opacity: 0; filter: blur(6px); transform: translateY(10px); }
-  37.25%, 55.5% { opacity: 1; filter: blur(0); transform: translateY(0); }
-  57.5%, 100% { opacity: 0; filter: blur(0); transform: translateY(0); }
+  0%,
+  31.25% {
+    opacity: 0;
+    filter: blur(6px);
+    transform: translateY(10px);
+  }
+  37.25%,
+  55.5% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+  57.5%,
+  100% {
+    opacity: 0;
+    filter: blur(0);
+    transform: translateY(0);
+  }
 }
 
 @keyframes hero-caption-final {
-  0%, 59.375% { opacity: 0; filter: blur(6px); transform: translateY(10px); }
-  65.375%, 90% { opacity: 1; filter: blur(0); transform: translateY(0); }
-  96%, 100% { opacity: 0; filter: blur(0); transform: translateY(0); }
+  0%,
+  59.375% {
+    opacity: 0;
+    filter: blur(6px);
+    transform: translateY(10px);
+  }
+  65.375%,
+  90% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+  96%,
+  100% {
+    opacity: 0;
+    filter: blur(0);
+    transform: translateY(0);
+  }
 }
 
 @keyframes hero-caption-intro-first {
-  0%, 12.5% { opacity: 0; filter: blur(6px); transform: translateY(10px); }
-  18.5%, 28% { opacity: 1; filter: blur(0); transform: translateY(0); }
-  30%, 100% { opacity: 0; filter: blur(0); transform: translateY(0); }
+  0%,
+  12.5% {
+    opacity: 0;
+    filter: blur(6px);
+    transform: translateY(10px);
+  }
+  18.5%,
+  28% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+  30%,
+  100% {
+    opacity: 0;
+    filter: blur(0);
+    transform: translateY(0);
+  }
 }
 
 @keyframes hero-caption-intro {
-  0% { opacity: 0; filter: blur(6px); transform: translateY(10px); }
-  6%, 28% { opacity: 1; filter: blur(0); transform: translateY(0); }
-  30%, 100% { opacity: 0; filter: blur(0); transform: translateY(0); }
+  0% {
+    opacity: 0;
+    filter: blur(6px);
+    transform: translateY(10px);
+  }
+  6%,
+  28% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+  30%,
+  100% {
+    opacity: 0;
+    filter: blur(0);
+    transform: translateY(0);
+  }
 }
 
 @keyframes hero-progress-intro {
-  0% { transform: scaleX(0); }
-  31.24% { transform: scaleX(1); }
-  31.25%, 100% { transform: scaleX(0); }
+  0% {
+    transform: scaleX(0);
+  }
+  31.24% {
+    transform: scaleX(1);
+  }
+  31.25%,
+  100% {
+    transform: scaleX(0);
+  }
 }
 
 @keyframes hero-progress-nature {
-  0%, 31.25% { transform: scaleX(0); }
-  59.374% { transform: scaleX(1); }
-  59.375%, 100% { transform: scaleX(0); }
+  0%,
+  31.25% {
+    transform: scaleX(0);
+  }
+  59.374% {
+    transform: scaleX(1);
+  }
+  59.375%,
+  100% {
+    transform: scaleX(0);
+  }
 }
 
 @keyframes hero-progress-final {
-  0%, 59.375% { transform: scaleX(0); }
-  99.99% { transform: scaleX(1); }
-  100% { transform: scaleX(0); }
+  0%,
+  59.375% {
+    transform: scaleX(0);
+  }
+  99.99% {
+    transform: scaleX(1);
+  }
+  100% {
+    transform: scaleX(0);
+  }
 }
 
 @media (max-width: 767px) {

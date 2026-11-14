@@ -29,7 +29,10 @@ export function ArtissimoCollection() {
           Inquire for Project
         </a>
       </div>
-      <ArtworkGrid artworks={collectionDesigns} imageClassName="max-md:aspect-4/3" />
+      <ArtworkGrid
+        artworks={collectionDesigns}
+        imageClassName="max-md:aspect-4/3"
+      />
       <InteriorApplications />
     </section>
   );

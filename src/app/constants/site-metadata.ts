@@ -20,7 +20,12 @@ export const siteMetadata: Metadata = {
     title,
     description,
     url: siteUrl.href,
-    images: [{ url: "/nature-inspired-interior.jpg", alt: "Artigiani sculptural wall art in a nature-inspired interior" }],
+    images: [
+      {
+        url: "/nature-inspired-interior.jpg",
+        alt: "Artigiani sculptural wall art in a nature-inspired interior",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
