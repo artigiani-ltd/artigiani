@@ -1,8 +1,61 @@
 @import "tailwindcss";
 
+.collection-heading {
+  font-family: var(--font-collection), Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.035em;
+}
+
+[data-reveal][data-motion] {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 900ms ease,
+    transform 1100ms cubic-bezier(0.2, 0.65, 0.3, 1);
+}
+
+[data-reveal="image"][data-motion] img {
+  transform: scale(1.06);
+  transition: transform 1600ms cubic-bezier(0.2, 0.65, 0.3, 1);
+}
+
+[data-reveal][data-motion][data-visible] {
+  opacity: 1;
+  transform: none;
+}
+
+[data-reveal][data-motion]:nth-child(2),
+figure:nth-child(2n) > [data-reveal][data-motion] {
+  transition-delay: 100ms;
+}
+
+figure:nth-child(3n) > [data-reveal][data-motion] {
+  transition-delay: 180ms;
+}
+
+[data-reveal="image"][data-visible] img {
+  transform: scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal][data-motion],
+  [data-reveal="image"][data-motion] img {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #302820;
+  --background: #000;
+  --foreground: #f0ede6;
+  --navbar-height: 4rem;
+}
+
+@media (min-width: 40rem) {
+  :root {
+    --navbar-height: 3.875rem;
+  }
 }
 
 @theme inline {
@@ -16,4 +69,464 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-inter-display), Arial, sans-serif;
+}
+
+.art-hero {
+  --hero-duration: 24s;
+  --hero-opening-duration: 5s;
+  --hero-word-stagger: 0.06s;
+  --hero-inset: calc(var(--navbar-height) + 1px + clamp(24px, 3vw, 60px));
+  position: relative;
+  min-height: 100svh;
+  overflow: clip;
+  background: var(--background);
+}
+
+.hero-composition {
+  display: grid;
+  /* Reserve the full caption width; the artwork takes the remaining space. */
+  grid-template-columns: max-content minmax(0, 1fr);
+  grid-template-rows: auto minmax(2.5rem, 1fr) auto;
+  align-items: end;
+  column-gap: 6%;
+  row-gap: 1rem;
+  width: 100%;
+  min-height: 100svh;
+  padding: var(--hero-inset) var(--hero-inset) clamp(2rem, 5svh, 4rem) 5.7%;
+}
+
+.hero-copy {
+  grid-column: 1;
+  grid-row: 1;
+  min-width: 0;
+}
+
+.hero-captions {
+  display: grid;
+  align-items: end;
+  min-height: 4em;
+  font-family: var(--font-editorial), Georgia, serif;
+  font-size: clamp(1.4375rem, 3.15vw, 3.6875rem);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 0.98;
+  letter-spacing: -0.025em;
+}
+
+.hero-caption {
+  grid-area: 1 / 1;
+  margin: 0;
+  color: var(--foreground);
+}
+
+.hero-caption-line {
+  display: block;
+  white-space: nowrap;
+}
+
+.hero-caption-word {
+  display: inline-block;
+  /* Give italic glyphs room inside each animated word's paint bounds. */
+  padding: 0.12em 0.18em;
+  margin: -0.12em -0.18em;
+  opacity: 0;
+  animation: var(--caption-animation) var(--hero-duration) linear infinite;
+  animation-delay: calc(
+    var(--hero-delay, 0s) + var(--word-index) * var(--hero-word-stagger)
+  );
+}
+
+/* Play the delayed intro once, then join the repeating scene clock. */
+[data-scene="intro"] .hero-caption-word {
+  animation-name: hero-caption-intro-first, hero-caption-intro;
+  animation-iteration-count: 1, infinite;
+  animation-delay:
+    calc(var(--hero-delay, 0s) + var(--word-index) * var(--hero-word-stagger)),
+    calc(
+      var(--hero-delay, 0s) + var(--hero-duration) + var(--word-index) *
+        var(--hero-word-stagger)
+    );
+}
+
+.hero-artwork {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-column: 2;
+  grid-row: 1;
+  align-self: start;
+  justify-self: end;
+  width: 90%;
+}
+
+.art-hero:not([data-selected]) .hero-artwork {
+  animation: hero-art-reveal var(--hero-opening-duration) ease-in-out both;
+}
+
+.hero-art-scene {
+  display: grid;
+  grid-area: 1 / 1;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  transform-origin: top right;
+  opacity: 0;
+  animation: var(--art-animation) var(--hero-duration) ease-in-out infinite;
+}
+
+.hero-panel {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+[data-scene="intro"] {
+  --art-animation: hero-art-intro;
+  --caption-animation: hero-caption-intro;
+  --scene-indicator-animation: hero-indicator-intro;
+}
+
+[data-scene="nature"] {
+  --art-animation: hero-art-nature;
+  --caption-animation: hero-caption-nature;
+  --scene-indicator-animation: hero-indicator-nature;
+}
+
+[data-scene="final"] {
+  --art-animation: hero-art-final;
+  --caption-animation: hero-caption-final;
+  --scene-indicator-animation: hero-indicator-final;
+}
+
+.hero-controls {
+  grid-column: 1 / -1;
+  grid-row: 3;
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.art-hero:not([data-selected]) .hero-controls {
+  animation: hero-controls-reveal 0.8s ease-out var(--hero-opening-duration)
+    both;
+}
+
+.hero-scene-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--foreground);
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  transition: color 300ms ease;
+}
+
+.hero-scene-button:hover {
+  color: #c4b38e;
+}
+
+.hero-scene-button:focus-visible {
+  outline: 2px solid #c4b38e;
+  outline-offset: 4px;
+}
+
+.hero-scene-number {
+  --scene-inactive-opacity: 0.55;
+  position: relative;
+  display: inline-block;
+}
+
+.hero-scene-number::after {
+  --scene-inactive-opacity: 0;
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 1.25rem;
+  height: 1px;
+  background: #c4b38e;
+}
+
+.hero-scene-number,
+.hero-scene-number::after {
+  opacity: var(--scene-inactive-opacity, 0);
+  animation: var(--scene-indicator-animation) var(--hero-duration) step-end
+    infinite;
+}
+
+.hero-art-scene,
+.hero-scene-number,
+.hero-scene-number::after {
+  animation-delay: var(--hero-delay, 0s);
+}
+
+.art-hero[data-paused] .hero-caption-word,
+.art-hero[data-paused] .hero-artwork,
+.art-hero[data-paused] .hero-art-scene,
+.art-hero[data-paused] .hero-controls,
+.art-hero[data-paused] .hero-scene-number,
+.art-hero[data-paused] .hero-scene-number::after {
+  animation-play-state: paused;
+}
+
+/* Artwork, captions, and scene indicators share the same 24s clock. */
+/* On the first pass, the intro image fades in for 5s and its caption starts at 3s. */
+@keyframes hero-art-reveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes hero-controls-reveal {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+/* Keep the outgoing layer opaque until the incoming image covers it. */
+@keyframes hero-art-intro {
+  0% {
+    opacity: 1;
+    animation-timing-function: step-end;
+  }
+  33.75% {
+    opacity: 0;
+    animation-timing-function: step-end;
+  }
+  95%,
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes hero-art-nature {
+  0%,
+  28.75% {
+    opacity: 0;
+  }
+  33.75% {
+    opacity: 1;
+    animation-timing-function: step-end;
+  }
+  61.875%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes hero-art-final {
+  0%,
+  56.875% {
+    opacity: 0;
+  }
+  61.875%,
+  95% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes hero-caption-nature {
+  0%,
+  31.25% {
+    opacity: 0;
+    filter: blur(2px);
+    transform: translateY(4px);
+  }
+  37.25%,
+  55.5% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+  57.5%,
+  100% {
+    opacity: 0;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-caption-final {
+  0%,
+  59.375% {
+    opacity: 0;
+    filter: blur(2px);
+    transform: translateY(4px);
+  }
+  65.375%,
+  90% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+  96%,
+  100% {
+    opacity: 0;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-caption-intro-first {
+  0%,
+  12.5% {
+    opacity: 0;
+    filter: blur(2px);
+    transform: translateY(4px);
+  }
+  18.5%,
+  28% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+  30%,
+  100% {
+    opacity: 0;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-caption-intro {
+  0% {
+    opacity: 0;
+    filter: blur(2px);
+    transform: translateY(4px);
+  }
+  6%,
+  28% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+  30%,
+  100% {
+    opacity: 0;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+/* Switch at the midpoint of each artwork crossfade, including the loop. */
+@keyframes hero-indicator-intro {
+  0%,
+  97.5%,
+  100% {
+    opacity: 1;
+  }
+  31.25% {
+    opacity: var(--scene-inactive-opacity, 0);
+  }
+}
+
+@keyframes hero-indicator-nature {
+  0%,
+  59.375%,
+  100% {
+    opacity: var(--scene-inactive-opacity, 0);
+  }
+  31.25% {
+    opacity: 1;
+  }
+}
+
+@keyframes hero-indicator-final {
+  0%,
+  97.5%,
+  100% {
+    opacity: var(--scene-inactive-opacity, 0);
+  }
+  59.375% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1023px) {
+  .hero-composition {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto minmax(2.75rem, 1fr);
+    align-content: start;
+    column-gap: 0;
+    row-gap: 1.5rem;
+    padding: var(--hero-inset) var(--hero-inset) 3rem 1.5rem;
+  }
+
+  .hero-copy {
+    grid-row: 2;
+    /* Let stacked captions use the full page width below the inset artwork. */
+    width: calc(100% + var(--hero-inset) - 1.5rem);
+  }
+
+  .hero-artwork {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .hero-controls {
+    grid-column: 1;
+    margin-top: 0.5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-captions {
+    font-size: clamp(1.3125rem, 6.3vw, 2.875rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .art-hero .hero-caption-word,
+  .art-hero .hero-artwork,
+  .art-hero:not([data-selected]) .hero-artwork,
+  .art-hero .hero-art-scene,
+  .art-hero .hero-controls,
+  .art-hero:not([data-selected]) .hero-controls,
+  .art-hero .hero-scene-number,
+  .art-hero .hero-scene-number::after {
+    animation: none;
+    transition: none;
+  }
+
+  .art-hero [data-scene] {
+    --static-scene-opacity: 0;
+  }
+
+  .art-hero:not([data-selected]) [data-scene="final"],
+  .art-hero[data-selected="intro"] [data-scene="intro"],
+  .art-hero[data-selected="nature"] [data-scene="nature"],
+  .art-hero[data-selected="final"] [data-scene="final"] {
+    --static-scene-opacity: 1;
+  }
+
+  .art-hero .hero-art-scene,
+  .art-hero .hero-caption-word,
+  .art-hero .hero-scene-number::after {
+    opacity: var(--static-scene-opacity);
+    transform: none;
+    filter: none;
+  }
+
+  .art-hero .hero-scene-number {
+    opacity: max(0.55, var(--static-scene-opacity));
+  }
 }
