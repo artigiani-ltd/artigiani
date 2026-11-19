@@ -11,8 +11,10 @@ must be the only way to update the branch.
 ## Quality checks and branch restrictions
 
 GitHub Actions runs `pnpm check` on pushes, pull requests, and merge groups.
-Vercel also uses `pnpm check` as its build command, so formatting, lint, types,
-and the production build must pass before that deployment can be published.
+Vercel runs `pnpm lint && pnpm typecheck && pnpm build`, so lint, types, and the
+production build must pass before that deployment can be published. Formatting
+is checked in GitHub against the source checkout because Vercel can normalize
+`vercel.json` before building. The generated pnpm cache is excluded from checks.
 These checks can run in parallel; Vercel's own checks gate its publication.
 
 Only `development` should deploy to this project:
