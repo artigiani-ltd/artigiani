@@ -22,8 +22,7 @@ The following retained assets are not used by the current hero. Each is
 
 The reference is `Artigiani Version 2 - Light.mp4`. The original color panels
 were extracted from its 19-second frame. The built-in image generation tool
-enhanced each panel separately, and the results were encoded as WebP at quality
-95. These are AI-enhanced interpretations: fine texture is reconstructed and
+enhanced each panel separately, and the results were encoded as WebP at quality 95. These are AI-enhanced interpretations: fine texture is reconstructed and
 should not be treated as an exact record of the physical artwork. Original
 high-resolution product photographs remain the best source for exact fidelity.
 

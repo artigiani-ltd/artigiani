@@ -32,7 +32,8 @@ export function MobileNavbar({ brand, brandHref, links }: MobileNavbarProps) {
         toggleRef.current?.focus();
       }
       if (event.key !== "Tab") return;
-      const controls = navigationRef.current?.querySelectorAll<HTMLElement>("a[href], button");
+      const controls =
+        navigationRef.current?.querySelectorAll<HTMLElement>("a[href], button");
       const first = controls?.[0];
       const last = controls?.[controls.length - 1];
       if (event.shiftKey && document.activeElement === first) {

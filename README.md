@@ -18,6 +18,31 @@ pnpm build
 pnpm start
 ```
 
+## Automated quality checks
+
+Use Node.js 22 (`nvm install` and `nvm use` read `.nvmrc`) and the pnpm version
+declared in `package.json`. Installing dependencies runs `prepare`, which enables
+the repository's Husky hooks.
+
+- Before each commit, lint-staged formats supported staged files and fixes
+  JavaScript and TypeScript lint issues. Remaining lint errors block the commit.
+- Before each push, `pnpm check` checks formatting, linting, TypeScript, and the
+  production build. Any failed check blocks the push.
+- GitHub Actions repeats `pnpm check` on pushes, pull requests, and merge queues
+  using a frozen lockfile. CI checks files without rewriting them.
+
+Run `pnpm check` manually at any time. Use `pnpm format` to fix formatting, or run
+`pnpm format:check`, `pnpm lint`, `pnpm typecheck`, and `pnpm build` separately.
+The full production build makes pushing slower in exchange for catching build
+failures locally.
+
+After this workflow has run on GitHub, configure a ruleset or branch protection
+for the default branch: require a pull request and the `Quality checks` status
+check before merging. Local hooks can be bypassed, so required CI checks enforce
+the merge gate. This repository configuration does not enable that GitHub setting.
+
+These checks do not include automated browser or unit tests yet.
+
 Deploy with a Next.js-compatible runtime so responsive image optimization remains
 available. The production URL defaults to `https://artigiani.design`; set
 `SITE_URL` before building only when overriding that origin.

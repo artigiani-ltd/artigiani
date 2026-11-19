@@ -11,4 +11,7 @@ export const rightLinks = [
   { label: "Contact", href: "/#contact" },
 ] as const satisfies readonly NavbarLink[];
 
-export const navigationLinks: readonly NavbarLink[] = [...leftLinks, ...rightLinks];
+export const navigationLinks: readonly NavbarLink[] = [
+  ...leftLinks,
+  ...rightLinks,
+];
