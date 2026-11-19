@@ -23,7 +23,10 @@ export function ArtHero() {
         </div>
       </div>
 
-      <div className="hero-artwork" aria-hidden="true">
+      <div
+        className="hero-artwork image-hover overflow-hidden"
+        aria-hidden="true"
+      >
         {scenes.map(({ id, image }) => (
           <div key={id} className="hero-art-scene" data-scene={id}>
             <Image

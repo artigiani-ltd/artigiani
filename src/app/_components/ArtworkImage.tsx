@@ -18,14 +18,14 @@ export function ArtworkImage({
   return (
     <div
       data-reveal="image"
-      className={`artwork-image relative overflow-hidden bg-[#e8e5df] ${className}`}
+      className={`artwork-image image-hover relative overflow-hidden bg-[#e8e5df] ${className}`}
     >
       <Image
         src={`/images/${name}.webp`}
         alt={alt}
         fill
         sizes={sizes}
-        className={`object-cover transition-transform duration-1000 ease-out motion-safe:hover:scale-[1.035] ${imageClassName}`}
+        className={`object-cover ${imageClassName}`}
       />
     </div>
   );
