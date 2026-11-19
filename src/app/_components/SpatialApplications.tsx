@@ -27,9 +27,6 @@ export function SpatialApplications() {
         <div data-reveal className="absolute inset-x-0 bottom-0 flex flex-wrap items-end justify-between gap-6 px-6 py-8 md:px-[2.4%] md:py-[2.7vw]">
           <div>
             <h3 className="collection-heading text-[clamp(2.25rem,4.2vw,5rem)] leading-tight">Artissimo 100 — Master Suite</h3>
-            <a href="#products" className="mt-5 inline-flex min-h-11 items-center gap-8 text-sm focus-visible:outline-2 focus-visible:outline-offset-4 md:mt-8">
-              View Artwork <span aria-hidden="true" className="flex size-10 items-center justify-center rounded-full bg-white text-black">→</span>
-            </a>
           </div>
           <a href="#gallery" className="inline-flex min-h-11 items-center gap-8 text-sm focus-visible:outline-2 focus-visible:outline-offset-4">
             Visit Gallery <span aria-hidden="true" className="flex size-10 items-center justify-center rounded-full bg-white text-black">→</span>

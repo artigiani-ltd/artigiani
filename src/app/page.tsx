@@ -5,7 +5,6 @@ import { collectionHeading } from "./constants/fonts";
 import { ScrollReveal } from "./_components/ScrollReveal";
 import { SculpturalHarmony } from "./_components/SculpturalHarmony";
 import { SpatialApplications } from "./_components/SpatialApplications";
-import { ArtissimoCollection } from "./_components/ArtissimoCollection";
 import { AtelierFooter } from "./_components/AtelierFooter";
 
 export default function Home() {
@@ -19,7 +18,6 @@ export default function Home() {
           <div className="bg-white text-[#242421]">
             <SculpturalHarmony />
             <SpatialApplications />
-            <ArtissimoCollection />
           </div>
         </main>
         <AtelierFooter />
