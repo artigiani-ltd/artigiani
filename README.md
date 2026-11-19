@@ -43,8 +43,8 @@ the merge gate. This repository configuration does not enable that GitHub settin
 
 These checks do not include automated browser or unit tests yet.
 
-Merges into `development` automatically deploy to Vercel, where `pnpm check`
-must pass before publication. See [Development deployments](docs/deployment.md)
+Merges into `development` automatically deploy to Vercel, where lint, types, and
+the production build must pass. See [Development deployments](docs/deployment.md)
 for branch restrictions, staging configuration, and separation from AWS production.
 
 Deploy with a Next.js-compatible runtime so responsive image optimization remains
