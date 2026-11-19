@@ -1,4 +1,5 @@
 .agents/
+.pnpm-store/
 AGENTS.md
 pnpm-lock.yaml
 public/

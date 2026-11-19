@@ -1,12 +1,13 @@
 import type { CSSProperties } from "react";
+import type { SceneId } from "../constants/hero-scenes";
 
 type HeroCaptionProps = {
-  sceneId: string;
+  sceneId: SceneId;
   lines: readonly string[];
 };
 
 export function HeroCaption({ sceneId, lines }: HeroCaptionProps) {
-  let wordIndex = 0;
+  let letterIndex = 0;
 
   return (
     <p className="hero-caption" data-scene={sceneId}>
@@ -15,11 +16,16 @@ export function HeroCaption({ sceneId, lines }: HeroCaptionProps) {
           {line.split(" ").map((word, index) => (
             <span key={`${word}-${index}`}>
               {index > 0 ? " " : null}
-              <span
-                className="hero-caption-word"
-                style={{ "--word-index": wordIndex++ } as CSSProperties}
-              >
-                {word}
+              <span className="hero-caption-word">
+                {Array.from(word).map((letter, characterIndex) => (
+                  <span
+                    key={characterIndex}
+                    className="hero-caption-letter"
+                    style={{ "--letter-index": letterIndex++ } as CSSProperties}
+                  >
+                    {letter}
+                  </span>
+                ))}
               </span>
             </span>
           ))}
