@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { collectionHeading } from "../constants/fonts";
-import natureInterior from "../../../public/nature-inspired-interior.jpg";
+import natureInterior from "../../../public/images/nature-inspired-interior.jpg";
 
 export function NatureInterior() {
   return (
