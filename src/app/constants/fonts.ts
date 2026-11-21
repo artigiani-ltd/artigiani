@@ -18,7 +18,7 @@ export const interDisplay = localFont({
 });
 
 export const beauRivage = localFont({
-  src: "../../fonts/BeauRivage-Regular.latin.woff2",
+  src: "../../fonts/BeauRivage-Regular.brand.woff2",
   variable: "--font-beau-rivage",
   display: "swap",
 });

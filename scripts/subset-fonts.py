@@ -19,9 +19,9 @@ FONT_NAMES = (
 UNICODE_RANGES = "0000-024F,1E00-1EFF,2000-206F,20A0-20CF,2100-21FF,2212,25B6,FEFF,FFFD"
 
 
-def subset_font(name: str) -> None:
+def subset_font(name: str, variant: str = "latin", text: str | None = None) -> None:
     source = FONT_DIRECTORY / f"{name}.woff2"
-    destination = FONT_DIRECTORY / f"{name}.latin.woff2"
+    destination = FONT_DIRECTORY / f"{name}.{variant}.woff2"
     options = subset.Options()
 
     with TTFont(source, recalcTimestamp=False) as font:
@@ -29,7 +29,10 @@ def subset_font(name: str) -> None:
         if "fvar" in font:
             instantiateVariableFont(font, {"wght": 400}, inplace=True)
         subsetter = subset.Subsetter(options=options)
-        subsetter.populate(unicodes=subset.parse_unicodes(UNICODE_RANGES))
+        if text is None:
+            subsetter.populate(unicodes=subset.parse_unicodes(UNICODE_RANGES))
+        else:
+            subsetter.populate(text=text)
         subsetter.subset(font)
         font.flavor = "woff2"
         font.save(destination)
@@ -40,3 +43,4 @@ def subset_font(name: str) -> None:
 if __name__ == "__main__":
     for font_name in FONT_NAMES:
         subset_font(font_name)
+    subset_font("BeauRivage-Regular", "brand", "Artigiani")
