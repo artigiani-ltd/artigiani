@@ -67,18 +67,19 @@ the deployed domain after launch.
 - `src/app`: routes, metadata routes, and the root layout.
 - `src/app/_components`: homepage sections and feature-specific UI.
 - `src/app/constants`: static content, fonts, and SEO configuration.
-- `src/app/types`: reusable homepage contracts.
 - `src/components/navigation`: shared navigation UI, data, and types.
 - `src/fonts`: self-hosted fonts and their licenses. WOFF2 assets are lossless
-  compressed versions of the corresponding TTF sources.
+  compressed and subset versions of the corresponding TTF sources. The `.brand`
+  subset contains only “Artigiani”; regenerate it with `scripts/subset-fonts.py`
+  and update its text if the wordmark changes. Full source fonts remain available.
 
 Most content is rendered on the server. Client components own only interactions:
-mobile navigation, hero playback, scroll reveals, and the email request form.
+mobile navigation, hero playback, scroll effects, and the installation carousel.
 
 ## Current product limitations
 
-Newsletter requests and project inquiries open the visitor's email application.
-They do not store subscriptions or deliver messages through a backend. Confirm
-the published contact details, product claims, and image rights before launch.
-The hero preserves its intentional five-second opening fade, which can delay
+Project inquiries open the visitor's email application. They do not deliver
+messages through a backend. Confirm the published contact details, product claims,
+and image rights before launch.
+The hero preserves its intentional one-second opening fade, which can delay
 perceived loading and Largest Contentful Paint on slower devices.

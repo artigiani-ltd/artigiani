@@ -22,7 +22,7 @@ export const siteMetadata: Metadata = {
     url: siteUrl.href,
     images: [
       {
-        url: "/images/nature-inspired-interior.jpg",
+        url: "/images/living-room.webp",
         alt: "Artigiani sculptural wall art in a nature-inspired interior",
       },
     ],
@@ -31,6 +31,6 @@ export const siteMetadata: Metadata = {
     card: "summary_large_image",
     title,
     description,
-    images: [new URL("/images/nature-inspired-interior.jpg", siteUrl).href],
+    images: [new URL("/images/living-room.webp", siteUrl).href],
   },
 };

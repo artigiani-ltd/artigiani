@@ -1,37 +1,35 @@
 import Image from "next/image";
-import { collectionHeading } from "../constants/fonts";
-import natureInterior from "../../../public/images/nature-inspired-interior.jpg";
+import interior from "../../../public/images/living-room.webp";
+import { ScrollParallax } from "./ScrollParallax";
 
 export function NatureInterior() {
   return (
     <section
-      id="nature-interior"
-      aria-labelledby="nature-interior-title"
-      className="relative isolate overflow-hidden bg-background text-white"
+      aria-labelledby="walls-title"
+      className="relative isolate overflow-hidden text-[#f8f7f3]"
     >
-      <Image
-        src={natureInterior}
-        alt="Flowing wooden wall panels and sculptural wall art in an elegant living room."
-        fill
-        className="object-cover object-[42%_center] sm:object-center"
-        sizes="100vw"
-      />
+      <div data-reveal="image">
+        <ScrollParallax className="h-72 sm:h-[23.5vw] sm:min-h-64">
+          <Image
+            src={interior}
+            alt="Sculptural walnut wave panels and a flower composition in a living room."
+            fill
+            sizes="100vw"
+            className="object-cover object-[center_40%]"
+          />
+        </ScrollParallax>
+      </div>
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-linear-to-b from-black/35 via-black/40 to-black/65"
+        className="pointer-events-none absolute inset-0 bg-black/40"
       />
-      <div className="relative min-h-svh px-6 pt-[50svh] pb-20 sm:px-[2.5%]">
-        <h2
-          id="nature-interior-title"
-          className={`${collectionHeading.className} max-w-6xl text-[clamp(2.75rem,5.25vw,6.25rem)] leading-none font-normal tracking-[-0.04em] text-balance`}
-        >
-          Art Inspired By Nature
-        </h2>
-        <p className="mt-6 max-w-80 text-lg leading-[1.4] font-semibold tracking-[-0.02em] text-[#ececec] sm:mt-8 sm:max-w-100 sm:text-xl lg:max-w-108 lg:text-2xl">
-          Bespoke Italian wall art and sculptural panels crafted from organic
-          textures for luxury interiors.
-        </p>
-      </div>
+      <h2
+        id="walls-title"
+        data-reveal
+        className="collection-heading absolute right-6 bottom-6 left-6 text-[clamp(3rem,5.25vw,6.5rem)] leading-none md:inset-x-[2.5%] md:bottom-[3vw]"
+      >
+        Walls in Motion
+      </h2>
     </section>
   );
 }

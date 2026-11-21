@@ -1,19 +1,19 @@
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
 
 type ArtworkImageProps = {
-  name: string;
+  src: StaticImageData;
   alt: string;
-  className?: string;
-  imageClassName?: string;
-  sizes?: string;
+  className: string;
+  sizes: string;
+  fit?: "cover" | "contain";
 };
 
 export function ArtworkImage({
-  name,
+  src,
   alt,
-  className = "aspect-4/3",
-  imageClassName = "",
-  sizes = "(max-width: 767px) 100vw, 50vw",
+  className,
+  sizes,
+  fit = "cover",
 }: ArtworkImageProps) {
   return (
     <div
@@ -21,11 +21,11 @@ export function ArtworkImage({
       className={`artwork-image relative overflow-hidden bg-[#e8e5df] ${className}`}
     >
       <Image
-        src={`/images/${name}.webp`}
+        src={src}
         alt={alt}
         fill
         sizes={sizes}
-        className={`object-cover transition-transform duration-1000 ease-out motion-safe:hover:scale-[1.035] ${imageClassName}`}
+        className={fit === "contain" ? "object-contain" : "object-cover"}
       />
     </div>
   );
