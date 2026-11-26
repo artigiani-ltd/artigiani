@@ -103,7 +103,7 @@ body {
 
 .art-hero {
   --hero-duration: 24s;
-  --hero-opening-duration: 1s;
+  --hero-opening-duration: 3s;
   --hero-letter-stagger: 0.1s;
   --hero-inset: calc(var(--navbar-height) + 1px + clamp(24px, 3vw, 60px));
   position: relative;
@@ -174,7 +174,7 @@ body {
 }
 
 /* Play the delayed intro once, then join the repeating scene clock. */
-[data-scene="intro"] .hero-caption-letter {
+.art-hero:not([data-selected]) [data-scene="intro"] .hero-caption-letter {
   animation-name: hero-caption-intro-first, hero-caption-intro;
   animation-iteration-count: 1, infinite;
   animation-delay:
@@ -195,9 +195,6 @@ body {
   align-self: start;
   justify-self: end;
   width: 90%;
-}
-
-.art-hero:not([data-selected]) .hero-artwork {
   animation: hero-art-reveal var(--hero-opening-duration) ease-in-out both;
 }
 
@@ -221,60 +218,34 @@ body {
   --art-animation: hero-art-intro;
   --caption-animation: hero-caption-intro;
   --scene-indicator-animation: hero-indicator-intro;
+  --scene-fill-timing: linear(0.0741, 1 31.25%, 0 97.5%, 0.0741);
 }
 
 [data-scene="nature"] {
   --art-animation: hero-art-nature;
   --caption-animation: hero-caption-nature;
   --scene-indicator-animation: hero-indicator-nature;
+  --scene-fill-timing: linear(0 31.25%, 1 59.375%, 1);
+}
+
+.hero-caption[data-scene="nature"] {
+  /* Let the last letter finish fading before the scene crossfade ends. */
+  --hero-letter-stagger: 0.05s;
 }
 
 [data-scene="final"] {
   --art-animation: hero-art-final;
   --caption-animation: hero-caption-final;
   --scene-indicator-animation: hero-indicator-final;
+  --scene-fill-timing: linear(0 59.375%, 1 97.5%, 1);
 }
 
-.hero-controls {
+.hero-progress {
   grid-column: 1 / -1;
   grid-row: 3;
   justify-self: end;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.art-hero:not([data-selected]) .hero-controls {
-  animation: hero-controls-reveal 0.8s ease-out var(--hero-opening-duration)
-    both;
-}
-
-.hero-scene-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: flex-start;
-  width: 44px;
-  height: 44px;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  color: var(--foreground);
-  font-size: 0.75rem;
-  font-weight: 400;
-  font-variant-numeric: tabular-nums;
-  line-height: 1;
-  letter-spacing: 0.12em;
-  cursor: pointer;
-  transition: color 300ms ease;
-}
-
-.hero-scene-button:hover {
-  color: var(--color-gold);
-}
-
-.hero-scene-button:focus-visible {
-  outline: 2px solid var(--color-gold);
-  outline-offset: 4px;
+  min-height: 44px;
+  animation: hero-progress-reveal var(--hero-duration) linear both;
 }
 
 .hero-scene-number {
@@ -289,9 +260,10 @@ body {
   position: absolute;
   bottom: -10px;
   left: 0;
-  width: 1.25rem;
+  width: 100%;
   height: 1px;
-  background: var(--color-gold);
+  background: currentColor;
+  transform-origin: left;
 }
 
 .hero-scene-number,
@@ -301,24 +273,29 @@ body {
     infinite;
 }
 
+.hero-scene-number::after {
+  animation:
+    var(--scene-indicator-animation) var(--hero-duration) step-end infinite,
+    hero-progress-fill var(--hero-duration) var(--scene-fill-timing) infinite;
+}
+
+@keyframes hero-progress-fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
 .hero-art-scene,
 .hero-scene-number,
 .hero-scene-number::after {
   animation-delay: var(--hero-delay, 0s);
 }
 
-.art-hero[data-paused] .hero-caption,
-.art-hero[data-paused] .hero-caption-letter,
-.art-hero[data-paused] .hero-artwork,
-.art-hero[data-paused] .hero-art-scene,
-.art-hero[data-paused] .hero-controls,
-.art-hero[data-paused] .hero-scene-number,
-.art-hero[data-paused] .hero-scene-number::after {
-  animation-play-state: paused;
-}
-
 /* Artwork, captions, and scene indicators share the same 24s clock. */
-/* Reveal the opening artwork in 1s, then start reading its caption at 1.5s. */
+
 @keyframes hero-art-reveal {
   from {
     opacity: 0;
@@ -328,12 +305,15 @@ body {
   }
 }
 
-@keyframes hero-controls-reveal {
-  from {
+/* Match the opening caption: 2s delay and a 0.48s fade. */
+@keyframes hero-progress-reveal {
+  0%,
+  8.333333% {
     opacity: 0;
     visibility: hidden;
   }
-  to {
+  10.333333%,
+  100% {
     opacity: 1;
     visibility: visible;
   }
@@ -388,23 +368,14 @@ body {
   0%,
   37.916667% {
     opacity: 0;
-    transform: translateY(0.65em);
-    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
   }
-  39.416667% {
-    opacity: 1;
-    transform: translateY(-0.06em);
-    animation-timing-function: ease-in-out;
-  }
-  40.166667%,
+  39.916667%,
   55.5% {
     opacity: 1;
-    transform: translateY(0);
   }
   57.5%,
   100% {
     opacity: 0;
-    transform: translateY(0);
   }
 }
 
@@ -412,47 +383,29 @@ body {
   0%,
   66.041667% {
     opacity: 0;
-    transform: translateY(0.65em);
-    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
   }
-  67.541667% {
-    opacity: 1;
-    transform: translateY(-0.06em);
-    animation-timing-function: ease-in-out;
-  }
-  68.291667%,
+  68.041667%,
   90% {
     opacity: 1;
-    transform: translateY(0);
   }
   92%,
   100% {
     opacity: 0;
-    transform: translateY(0);
   }
 }
 
 @keyframes hero-caption-intro-first {
   0%,
-  6.25% {
+  8.333333% {
     opacity: 0;
-    transform: translateY(0.65em);
-    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
   }
-  7.75% {
-    opacity: 1;
-    transform: translateY(-0.06em);
-    animation-timing-function: ease-in-out;
-  }
-  8.5%,
+  10.333333%,
   28% {
     opacity: 1;
-    transform: translateY(0);
   }
   30%,
   100% {
     opacity: 0;
-    transform: translateY(0);
   }
 }
 
@@ -460,23 +413,14 @@ body {
   0%,
   4.166667% {
     opacity: 0;
-    transform: translateY(0.65em);
-    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
   }
-  5.666667% {
-    opacity: 1;
-    transform: translateY(-0.06em);
-    animation-timing-function: ease-in-out;
-  }
-  6.416667%,
+  6.166667%,
   28% {
     opacity: 1;
-    transform: translateY(0);
   }
   30%,
   100% {
     opacity: 0;
-    transform: translateY(0);
   }
 }
 
@@ -535,7 +479,7 @@ body {
     grid-row: 1;
   }
 
-  .hero-controls {
+  .hero-progress {
     grid-column: 1;
     margin-top: 0.5rem;
   }
@@ -551,14 +495,11 @@ body {
   .art-hero .hero-caption,
   .art-hero .hero-caption-letter,
   .art-hero .hero-artwork,
-  .art-hero:not([data-selected]) .hero-artwork,
   .art-hero .hero-art-scene,
-  .art-hero .hero-controls,
-  .art-hero:not([data-selected]) .hero-controls,
+  .art-hero .hero-progress,
   .art-hero .hero-scene-number,
   .art-hero .hero-scene-number::after {
     animation: none;
-    transition: none;
   }
 
   .art-hero [data-scene] {
