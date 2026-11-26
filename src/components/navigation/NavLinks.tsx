@@ -12,7 +12,7 @@ export function NavLinks({ links, className = "" }: NavLinksProps) {
       {links.map(({ label, href }) => (
         <li key={`${label}-${href}`}>
           <Link
-            className="inline-flex min-h-11 items-center font-sans text-xs leading-none font-semibold text-foreground uppercase no-underline transition-opacity duration-150 hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-4"
+            className="inline-flex min-h-11 items-center font-sans text-xs leading-none font-semibold text-foreground uppercase no-underline transition-colors duration-150 hover:text-gold focus-visible:outline-2 focus-visible:outline-offset-4"
             href={href}
           >
             {label}

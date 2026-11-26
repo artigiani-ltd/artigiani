@@ -16,7 +16,7 @@ export function SpatialApplications() {
         </h2>
         <p
           data-reveal
-          className="max-w-lg text-sm leading-[1.6] text-[#52524e] md:pr-[4vw] md:text-[clamp(0.875rem,1.25vw,1.5rem)]"
+          className="max-w-lg text-sm leading-[1.6] text-linen md:pr-[4vw] md:text-[clamp(0.875rem,1.25vw,1.5rem)]"
         >
           Designed to transform residential and commercial architecture. Each
           undulating modular panel integrates seamlessly into living spaces,

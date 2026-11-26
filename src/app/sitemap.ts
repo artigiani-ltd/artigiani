@@ -3,5 +3,7 @@ import { isIndexable } from "./constants/indexing";
 import { siteUrl } from "./constants/site-url";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return isIndexable ? [{ url: siteUrl.href }] : [];
+  return isIndexable
+    ? [{ url: siteUrl.href }, { url: new URL("/about", siteUrl).href }]
+    : [];
 }

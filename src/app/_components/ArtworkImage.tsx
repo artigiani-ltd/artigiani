@@ -18,7 +18,7 @@ export function ArtworkImage({
   return (
     <div
       data-reveal="image"
-      className={`artwork-image relative overflow-hidden bg-[#e8e5df] ${className}`}
+      className={`artwork-image relative overflow-hidden bg-background ${className}`}
     >
       <Image
         src={src}

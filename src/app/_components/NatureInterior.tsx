@@ -6,7 +6,7 @@ export function NatureInterior() {
   return (
     <section
       aria-labelledby="walls-title"
-      className="relative isolate overflow-hidden text-[#f8f7f3]"
+      className="relative isolate overflow-hidden bg-background text-foreground"
     >
       <div data-reveal="image">
         <ScrollParallax className="h-72 sm:h-[23.5vw] sm:min-h-64">
@@ -21,7 +21,7 @@ export function NatureInterior() {
       </div>
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-black/40"
+        className="pointer-events-none absolute inset-0 bg-background/55"
       />
       <h2
         id="walls-title"

@@ -1,5 +1,6 @@
 import { OrganizationStructuredData } from "./_components/OrganizationStructuredData";
 import { ArtHero } from "./_components/ArtHero";
+import { AboutPreview } from "./_components/AboutPreview";
 import { NatureInterpretation } from "./_components/NatureInterpretation";
 import { NatureInterior } from "./_components/NatureInterior";
 import { collectionHeading } from "./constants/fonts";
@@ -16,7 +17,8 @@ export default function Home() {
       <ScrollReveal>
         <main id="main-content">
           <ArtHero />
-          <div className="bg-[#f8f7f3] text-[#242421]">
+          <AboutPreview />
+          <div className="bg-surface text-foreground">
             <NatureInterpretation />
             <NatureInterior />
             <DesignGallery />
