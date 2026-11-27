@@ -74,7 +74,7 @@ export function InstallationCarousel() {
             <h3 className={`${editorial.className} text-item-title`}>
               {activeInstallation.title}
             </h3>
-            <p className="mt-2 text-xs leading-relaxed text-linen">
+            <p className="mt-2 text-xs leading-relaxed">
               {activeInstallation.description}
             </p>
           </motion.div>

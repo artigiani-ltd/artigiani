@@ -2,7 +2,7 @@ import { compositions } from "../constants/compositions";
 import { ArtworkImage } from "./ArtworkImage";
 
 const inquiryClassName =
-  "inline-flex min-h-11 items-center justify-center border border-antique-gold px-5 text-xs tracking-[0.08em] text-gold uppercase transition-colors hover:border-gold hover:bg-gold hover:text-background focus-visible:outline-2 focus-visible:outline-offset-4 motion-reduce:transition-none";
+  "inline-flex min-h-11 items-center justify-center border border-antique-gold px-5 text-xs tracking-[0.08em] text-background uppercase transition-colors hover:border-gold hover:bg-gold hover:text-background focus-visible:outline-2 focus-visible:outline-offset-4 motion-reduce:transition-none";
 
 export function ArtissimoCollection() {
   return (
@@ -22,7 +22,7 @@ export function ArtissimoCollection() {
           >
             Compositions
           </h2>
-          <p className="collection-heading mt-6 max-w-2xl text-body leading-relaxed tracking-normal text-linen md:mt-[2.5vw] md:max-w-[48vw]">
+          <p className="collection-heading mt-6 max-w-2xl text-body leading-relaxed tracking-normal md:mt-[2.5vw] md:max-w-[48vw]">
             Modular configurations available in standard dimensions or
             commissioned to your exact architectural specifications.
           </p>
@@ -51,7 +51,7 @@ export function ArtissimoCollection() {
               <h3 className="collection-heading min-h-12 text-item-title leading-tight tracking-normal">
                 {composition.title}
               </h3>
-              <p className="mt-6 text-xs leading-relaxed text-linen md:mt-[2vw]">
+              <p className="mt-6 text-xs leading-relaxed md:mt-[2vw]">
                 {composition.dimensions}
               </p>
               <a

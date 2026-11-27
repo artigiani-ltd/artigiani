@@ -1,13 +1,18 @@
 "use client";
 
-import { useEffect, useRef, type ReactNode } from "react";
+import { useEffect, useRef, type CSSProperties, type ReactNode } from "react";
 
 type ScrollParallaxProps = {
   children: ReactNode;
   className: string;
+  travel?: number;
 };
 
-export function ScrollParallax({ children, className }: ScrollParallaxProps) {
+export function ScrollParallax({
+  children,
+  className,
+  travel = 0.2,
+}: ScrollParallaxProps) {
   const container = useRef<HTMLDivElement>(null);
   const layer = useRef<HTMLDivElement>(null);
 
@@ -38,7 +43,7 @@ export function ScrollParallax({ children, className }: ScrollParallaxProps) {
             (window.innerHeight + bounds.height),
         ),
       );
-      const offset = (progress - 0.5) * bounds.height * 0.2;
+      const offset = (progress - 0.5) * bounds.height * travel;
       image.style.transform = `translate3d(0, ${offset}px, 0)`;
     }
 
@@ -57,13 +62,16 @@ export function ScrollParallax({ children, className }: ScrollParallaxProps) {
       window.removeEventListener("resize", scheduleUpdate);
       preference.removeEventListener("change", scheduleUpdate);
     };
-  }, []);
+  }, [travel]);
 
   return (
     <div ref={container} className={`relative overflow-hidden ${className}`}>
       <div
         ref={layer}
-        className="absolute inset-x-0 -inset-y-[12%] motion-safe:will-change-transform motion-reduce:inset-y-0"
+        className="absolute inset-x-0 inset-y-0 motion-safe:inset-y-(--parallax-inset) motion-safe:will-change-transform"
+        style={
+          { "--parallax-inset": `${-(travel * 50 + 2)}%` } as CSSProperties
+        }
       >
         {children}
       </div>

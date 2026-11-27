@@ -15,7 +15,7 @@ export function DesignGallery() {
         >
           Our Designs
         </h2>
-        <p className="mt-7 max-w-2xl text-body leading-relaxed text-linen md:mt-[2.5vw] md:max-w-[47%]">
+        <p className="mt-7 max-w-2xl text-body leading-relaxed md:mt-[2.5vw] md:max-w-[47%]">
           We invite you to be inspired by the endless compositions offered by
           “Artissimo 100” and to let your imagination explore the vast
           possibilities of creating a luxurious representation of nature,
@@ -37,16 +37,14 @@ export function DesignGallery() {
             />
             <figcaption className="mt-6 md:mt-[3.5vw]">
               <div data-reveal>
-                <p className="mb-4 text-xs text-linen md:mb-[1.8vw]">
-                  {design.number}
-                </p>
+                <p className="mb-4 text-xs md:mb-[1.8vw]">{design.number}</p>
                 <h3 className="collection-heading text-item-title leading-[1.05]">
                   {design.title}
                 </h3>
               </div>
               <p
                 data-reveal
-                className="mt-5 text-body leading-relaxed text-linen md:mt-[2.5vw]"
+                className="mt-5 text-body leading-relaxed md:mt-[2.5vw]"
               >
                 {design.description}
               </p>

@@ -12,21 +12,25 @@ import { AtelierFooter } from "./_components/AtelierFooter";
 
 export default function Home() {
   return (
-    <div className={collectionHeading.variable}>
+    <div
+      className={`${collectionHeading.variable} bg-foreground text-background`}
+    >
       <OrganizationStructuredData />
       <ScrollReveal>
         <main id="main-content">
-          <ArtHero />
-          <AboutPreview />
-          <div className="bg-surface text-foreground">
-            <NatureInterpretation />
-            <NatureInterior />
-            <DesignGallery />
-            <SpatialApplications />
-            <ArtissimoCollection />
+          <div className="text-foreground">
+            <ArtHero />
+            <AboutPreview />
+            <div className="bg-surface">
+              <NatureInterpretation />
+              <NatureInterior />
+            </div>
           </div>
+          <DesignGallery />
+          <SpatialApplications />
+          <ArtissimoCollection />
         </main>
-        <AtelierFooter />
+        <AtelierFooter light />
       </ScrollReveal>
     </div>
   );
