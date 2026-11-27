@@ -1,6 +1,9 @@
 import Image from "next/image";
+import water from "../../../public/images/water-image.png";
+import sand from "../../../public/images/sand-image.png";
 import timberDetail from "../../../public/images/nature-timber-detail.webp";
 import { editorial } from "../constants/fonts";
+import { ArtworkImage } from "./ArtworkImage";
 import { ScrollParallax } from "./ScrollParallax";
 
 export function NatureInterpretation() {
@@ -46,15 +49,36 @@ export function NatureInterpretation() {
             luxurious style.
           </p>
         </div>
-        <p
-          data-reveal-step
-          className="text-body leading-relaxed md:col-start-3 md:row-start-1 md:self-end"
-        >
-          Artissimo 100 is formed by a collection of modules, designed to be
-          harmoniously and precisely joined together, offering you a great
-          opportunity to rebuild the splendid motifs of nature in a modern and
-          abstract work of art.
-        </p>
+        <div className="flex flex-col justify-between gap-8 md:col-start-3 md:row-start-1">
+          <div data-reveal-step className="grid grid-cols-2 gap-3">
+            {[
+              { src: water, caption: "Water" },
+              { src: sand, caption: "Sand" },
+            ].map(({ src, caption }) => (
+              <figure key={caption}>
+                <ArtworkImage
+                  src={src}
+                  alt=""
+                  className="aspect-square"
+                  sizes="(min-width: 768px) 13vw, calc(50vw - 30px)"
+                  fit="contain"
+                  zoomOnHover={false}
+                />
+                <figcaption
+                  className={`${editorial.className} mt-2 text-center text-sm`}
+                >
+                  {caption}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+          <p data-reveal-step className="text-body leading-relaxed">
+            Artissimo 100 is formed by a collection of modules, designed to be
+            harmoniously and precisely joined together, offering you a great
+            opportunity to rebuild the splendid motifs of nature in a modern and
+            abstract work of art.
+          </p>
+        </div>
       </div>
     </section>
   );
