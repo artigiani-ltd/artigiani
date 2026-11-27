@@ -93,6 +93,10 @@ figure:nth-child(3n) > [data-reveal][data-motion] {
   --color-linen: #ddd3c0;
   --font-sans: var(--font-inter-display);
   --font-brand: var(--font-beau-rivage);
+  --text-page-title: clamp(3rem, 6vw, 5.5rem);
+  --text-section-title: clamp(2.25rem, 4vw, 3.5rem);
+  --text-item-title: clamp(1.25rem, 2vw, 1.5rem);
+  --text-body: clamp(1rem, 1.25vw, 1.125rem);
 }
 
 body {

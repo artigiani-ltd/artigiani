@@ -71,12 +71,10 @@ export function InstallationCarousel() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.32, ease: "easeOut" }}
           >
-            <h3
-              className={`${editorial.className} text-xl md:text-[clamp(1.25rem,1.65vw,2rem)]`}
-            >
+            <h3 className={`${editorial.className} text-item-title`}>
               {activeInstallation.title}
             </h3>
-            <p className="mt-2 text-[10px] leading-relaxed text-linen md:text-xs">
+            <p className="mt-2 text-xs leading-relaxed text-linen">
               {activeInstallation.description}
             </p>
           </motion.div>

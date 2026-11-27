@@ -2,7 +2,7 @@ import type { NavbarLink } from "../types/navbar";
 
 export const leftLinks = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/#about" },
+  { label: "About", href: "/about" },
   { label: "Gallery", href: "/#gallery" },
 ] as const satisfies readonly NavbarLink[];
 

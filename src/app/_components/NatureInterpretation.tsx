@@ -13,10 +13,10 @@ export function NatureInterpretation() {
       <h2
         id="nature-interpretation-title"
         data-reveal-step
-        className={`${editorial.className} mb-10 text-center text-[clamp(2.75rem,7vw,4.5rem)] leading-[1.05] font-normal tracking-[-0.035em] [--reveal-lift:1.5rem] md:mb-[7.2vw] md:text-[5.25vw]`}
+        className={`${editorial.className} mb-10 text-center text-section-title leading-[1.05] font-normal text-balance tracking-[-0.035em] [--reveal-lift:1.5rem] md:mb-[7.2vw]`}
       >
-        <span className="block">A Luxurious </span>
-        <span className="block">Interpretation of Nature</span>
+        <span className="md:block">A Luxurious </span>
+        Interpretation of Nature
       </h2>
       <div className="grid gap-8 [--reveal-delay:2s] md:grid-cols-[1fr_1.14fr_1fr] md:gap-x-[4vw] md:gap-y-0">
         <div
@@ -36,7 +36,7 @@ export function NatureInterpretation() {
         <div className="md:col-start-1 md:row-start-1 md:self-stretch">
           <p
             data-reveal-step
-            className="text-base leading-[1.8] motion-safe:md:sticky motion-safe:md:top-[calc(var(--navbar-height)+2rem)] md:text-right md:text-[clamp(0.75rem,1.35vw,1.5rem)] md:leading-[1.67]"
+            className="text-body leading-relaxed motion-safe:md:sticky motion-safe:md:top-[calc(var(--navbar-height)+2rem)] md:text-right"
           >
             Nature continues to inspire humanity with an infinite variety of
             forms and colours, and so does “Artissimo 100”. Inspired by the
@@ -48,7 +48,7 @@ export function NatureInterpretation() {
         </div>
         <p
           data-reveal-step
-          className="text-base leading-[1.8] md:col-start-3 md:row-start-1 md:self-end md:text-[clamp(0.75rem,1.35vw,1.5rem)] md:leading-[1.67]"
+          className="text-body leading-relaxed md:col-start-3 md:row-start-1 md:self-end"
         >
           Artissimo 100 is formed by a collection of modules, designed to be
           harmoniously and precisely joined together, offering you a great

@@ -13,20 +13,20 @@ export function AboutPreview() {
       <div className="mx-auto grid max-w-7xl items-center gap-12 md:grid-cols-[1fr_1.05fr] md:gap-[9%]">
         <div data-reveal>
           <p className="mb-6 flex items-center gap-4 text-xs font-semibold tracking-[0.25em] uppercase before:h-px before:w-9 before:bg-gold">
-            About Us
+            The Artist
           </p>
           <h2
             id="about-preview-title"
-            className="collection-heading text-[clamp(3rem,6vw,6.5rem)] leading-[0.9]"
+            className="collection-heading text-section-title leading-none"
           >
             Janan Khammo
             <span
-              className={`${editorial.className} mt-3 block text-[0.53em] leading-tight`}
+              className={`${editorial.className} mt-3 block text-item-title leading-tight`}
             >
               From Architecture to Art
             </span>
           </h2>
-          <p className="mt-7 max-w-sm text-base leading-relaxed text-foreground/80">
+          <p className="mt-7 max-w-sm text-body leading-relaxed text-foreground/80">
             Drawing on four decades in architecture and an upbringing shaped by
             Iraqi and Italian traditions, Janan Khammo brings his architectural
             eye to the sculptural woodwork of Artigiani.Design.

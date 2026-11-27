@@ -32,10 +32,10 @@ export default function AboutPage() {
           <p className="mb-7 text-xs font-semibold tracking-[0.28em] text-gold uppercase">
             About Us
           </p>
-          <h1 className="collection-heading text-[clamp(3.5rem,10vw,10rem)] leading-[0.85]">
+          <h1 className="collection-heading text-page-title leading-none">
             Janan Khammo
             <span
-              className={`${editorial.className} mt-5 block text-[0.43em] leading-tight text-linen`}
+              className={`${editorial.className} mt-5 block text-item-title leading-tight text-linen`}
             >
               From Architecture to Art
             </span>
@@ -50,8 +50,8 @@ export default function AboutPage() {
           />
         </div>
         <article className="mx-auto max-w-7xl px-6 py-16 md:px-12 md:py-24">
-          <div className="mx-auto max-w-2xl space-y-6 text-base leading-relaxed text-linen md:text-lg">
-            <p className="collection-heading border-l border-gold pl-5 text-2xl leading-snug text-foreground md:pl-8 md:text-4xl">
+          <div className="mx-auto max-w-2xl space-y-6 text-body leading-relaxed text-linen">
+            <p className="collection-heading border-l border-gold pl-5 text-item-title leading-snug text-foreground md:pl-8">
               Architect and designer Janan Khammo brings together over four
               decades of architectural experience, artistic creativity, and a
               distinctive multicultural heritage. Born in Baghdad to an Italian
@@ -86,7 +86,7 @@ export default function AboutPage() {
               className="aspect-[4/5]"
               sizes="(min-width: 1280px) 500px, (min-width: 768px) 38vw, calc(100vw - 48px)"
             />
-            <div className="space-y-6 text-base leading-relaxed text-linen md:text-lg">
+            <div className="space-y-6 text-body leading-relaxed text-linen">
               <p>
                 This philosophy eventually inspired the creation of
                 Artigiani.Design, an Italian artistic venture that extends his
@@ -100,7 +100,7 @@ export default function AboutPage() {
                 and refined Italian craftsmanship.
               </p>
               <p
-                className={`${editorial.className} text-2xl leading-snug text-foreground md:text-3xl`}
+                className={`${editorial.className} text-item-title leading-snug text-foreground`}
               >
                 Artigiani.Design represents the natural evolution of Janan
                 Khammo&apos;s lifelong creative journey — transforming an

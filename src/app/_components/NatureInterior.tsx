@@ -26,7 +26,7 @@ export function NatureInterior() {
       <h2
         id="walls-title"
         data-reveal
-        className="collection-heading absolute right-6 bottom-6 left-6 text-[clamp(3rem,5.25vw,6.5rem)] leading-none md:inset-x-[2.5%] md:bottom-[3vw]"
+        className="collection-heading absolute right-6 bottom-6 left-6 text-section-title leading-none md:inset-x-[2.5%] md:bottom-[3vw]"
       >
         Walls in Motion
       </h2>
