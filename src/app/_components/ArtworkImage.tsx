@@ -6,6 +6,7 @@ type ArtworkImageProps = {
   className: string;
   sizes: string;
   fit?: "cover" | "contain";
+  zoomOnHover?: boolean;
 };
 
 export function ArtworkImage({
@@ -14,11 +15,12 @@ export function ArtworkImage({
   className,
   sizes,
   fit = "cover",
+  zoomOnHover = true,
 }: ArtworkImageProps) {
   return (
     <div
       data-reveal="image"
-      className={`artwork-image relative overflow-hidden bg-background ${className}`}
+      className={`${zoomOnHover ? "artwork-image " : ""}relative overflow-hidden bg-background ${className}`}
     >
       <Image
         src={src}
