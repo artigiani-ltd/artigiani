@@ -10,7 +10,7 @@ export function AboutPreview() {
       aria-labelledby="about-preview-title"
       className="bg-background px-6 py-16 sm:px-10 md:px-[8%] md:py-24 lg:py-32"
     >
-      <div className="isolate mx-auto grid max-w-7xl items-center md:grid-cols-[minmax(0,1fr)_min(40%,28rem)] md:gap-8 lg:gap-14 min-[1640px]:max-w-[86rem] min-[1640px]:gap-20">
+      <div className="isolate mx-auto grid max-w-7xl items-center md:grid-cols-[minmax(0,1fr)_min(40%,28rem)] md:gap-8 lg:gap-14 min-[1640px]:max-w-344 min-[1640px]:gap-20">
         <div className="grid grid-cols-[56%_38%_6%] items-start">
           <figure className="col-start-1 col-end-3 row-start-1">
             <ArtworkImage
