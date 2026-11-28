@@ -74,7 +74,7 @@ export function InquiryForm() {
         <div className="flex flex-wrap items-center gap-5 sm:col-span-2">
           <button
             type="button"
-            className="inline-flex min-h-12 items-center justify-center gap-8 bg-background px-6 text-xs tracking-[0.12em] text-foreground uppercase disabled:cursor-not-allowed disabled:opacity-50"
+            className="inline-flex min-h-12 items-center justify-center gap-8 bg-[#7c5f2d] px-6 text-xs tracking-[0.12em] text-foreground uppercase disabled:cursor-not-allowed disabled:opacity-50"
           >
             Send inquiry <span aria-hidden="true">↗</span>
           </button>

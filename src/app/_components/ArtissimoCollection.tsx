@@ -3,7 +3,7 @@ import { editorial } from "../constants/fonts";
 import { ArtworkImage } from "./ArtworkImage";
 
 const catalogueLinkClassName =
-  "inline-flex min-h-11 items-center text-xs uppercase underline underline-offset-4 transition-colors hover:text-background focus-visible:outline-2 focus-visible:outline-offset-4 motion-reduce:transition-none";
+  "inline-flex min-h-11 items-center text-xs uppercase underline underline-offset-4 hover:decoration-2 focus-visible:outline-2 focus-visible:outline-offset-4";
 
 export function ArtissimoCollection() {
   return (
@@ -32,7 +32,7 @@ export function ArtissimoCollection() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="View all compositions in the catalogue (PDF, opens in a new tab)"
-          className="mt-7 inline-flex min-h-11 items-center justify-center border border-background px-5 text-[10px] tracking-[0.1em] text-background uppercase transition-colors hover:bg-background hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 motion-reduce:transition-none"
+          className="mt-7 inline-flex min-h-11 items-center justify-center border border-[#7c5f2d] px-5 text-[10px] tracking-[0.1em] text-[#7c5f2d] uppercase transition-colors hover:bg-[#7c5f2d] hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 motion-reduce:transition-none"
         >
           View all compositions
         </a>
@@ -41,7 +41,7 @@ export function ArtissimoCollection() {
         {compositionFamilies.map((family, index) => (
           <div
             key={family.name}
-            className="grid gap-7 border-t border-antique-gold/35 py-10 md:grid-cols-[1.6fr_3fr] md:gap-[3vw] md:py-[4.5vw]"
+            className="grid gap-7 border-t border-[#7c5f2d] py-10 md:grid-cols-[1.6fr_3fr] md:gap-[3vw] md:py-[4.5vw]"
           >
             <div data-reveal>
               <p className={`${editorial.className} text-lg`}>
@@ -71,7 +71,7 @@ export function ArtissimoCollection() {
                   <ArtworkImage
                     src={piece.image}
                     alt={`${family.name} composition ${piece.number.toUpperCase()} — catalogue drawing`}
-                    className="aspect-square bg-white [&_img]:p-[8%]"
+                    className="aspect-square border border-[#7c5f2d] bg-white [&_img]:p-[8%]"
                     fit="contain"
                     sizes="(min-width: 768px) 19vw, (min-width: 480px) 29vw, calc(100vw - 48px)"
                   />

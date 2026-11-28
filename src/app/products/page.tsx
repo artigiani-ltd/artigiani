@@ -65,7 +65,7 @@ export default function ProductsPage() {
                 </p>
                 <a
                   href="#compositions"
-                  className="mt-4 inline-flex min-h-11 items-center gap-4 text-xs tracking-[0.12em] uppercase underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4"
+                  className="mt-4 inline-flex min-h-11 items-center gap-4 text-xs tracking-[0.12em] text-[#7c5f2d] uppercase underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4"
                 >
                   Explore compositions <span aria-hidden="true">↓</span>
                 </a>
@@ -107,7 +107,7 @@ export default function ProductsPage() {
               </p>
               <Link
                 href="/contact"
-                className="mt-5 inline-flex min-h-11 items-center gap-8 border-b border-background text-xs tracking-[0.12em] uppercase hover:text-antique-gold focus-visible:outline-2 focus-visible:outline-offset-4"
+                className="mt-5 inline-flex min-h-11 items-center gap-8 border-b border-[#7c5f2d] text-xs tracking-[0.12em] text-[#7c5f2d] uppercase hover:border-b-2 focus-visible:outline-2 focus-visible:outline-offset-4"
               >
                 Discuss your project <span aria-hidden="true">↗</span>
               </Link>

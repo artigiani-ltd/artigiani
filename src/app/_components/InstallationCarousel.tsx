@@ -50,7 +50,7 @@ export function InstallationCarousel() {
           type="button"
           aria-label="Previous installation"
           onClick={() => showInstallation(-1)}
-          className="absolute top-1/2 left-0 flex size-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-background text-2xl text-foreground transition-colors hover:bg-surface hover:text-gold focus-visible:outline-2 focus-visible:outline-gold motion-reduce:transition-none"
+          className="absolute top-1/2 left-0 flex size-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[#7c5f2d] text-2xl text-foreground transition-colors hover:bg-[#624b24] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#7c5f2d] motion-reduce:transition-none"
         >
           <span aria-hidden="true">‹</span>
         </button>
@@ -58,7 +58,7 @@ export function InstallationCarousel() {
           type="button"
           aria-label="Next installation"
           onClick={() => showInstallation(1)}
-          className="absolute top-1/2 right-0 flex size-11 translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-background text-2xl text-foreground transition-colors hover:bg-surface hover:text-gold focus-visible:outline-2 focus-visible:outline-gold motion-reduce:transition-none"
+          className="absolute top-1/2 right-0 flex size-11 translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[#7c5f2d] text-2xl text-foreground transition-colors hover:bg-[#624b24] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#7c5f2d] motion-reduce:transition-none"
         >
           <span aria-hidden="true">›</span>
         </button>

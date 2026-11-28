@@ -33,7 +33,7 @@ export function ProductCompositions() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="View the composition catalogue (PDF, opens in a new tab)"
-          className="inline-flex min-h-11 items-center gap-4 text-xs tracking-[0.08em] uppercase underline underline-offset-4 hover:text-antique-gold focus-visible:outline-2 focus-visible:outline-offset-4"
+          className="inline-flex min-h-11 items-center gap-4 text-xs tracking-[0.08em] text-[#7c5f2d] uppercase underline underline-offset-4 hover:decoration-2 focus-visible:outline-2 focus-visible:outline-offset-4"
         >
           Catalogue (PDF) <span aria-hidden="true">↗</span>
         </a>
@@ -88,7 +88,7 @@ export function ProductCompositions() {
                     piece: composition.piece,
                   })
                 }
-                className="absolute inset-0 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-4"
+                className="absolute inset-0 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#7c5f2d]"
               />
             </article>
           ))}

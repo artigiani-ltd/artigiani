@@ -63,7 +63,7 @@ export function ProductDetailDialog({
           aria-label="Close product details"
           autoFocus
           onClick={() => dialogRef.current?.close()}
-          className="absolute top-2 right-2 flex size-11 cursor-pointer items-center justify-center text-2xl hover:text-antique-gold focus-visible:outline-2 focus-visible:outline-offset-2 md:top-3 md:right-3"
+          className="absolute top-2 right-2 flex size-11 cursor-pointer items-center justify-center text-2xl text-[#7c5f2d] hover:bg-[#7c5f2d] hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#7c5f2d] md:top-3 md:right-3"
         >
           <span aria-hidden="true">×</span>
         </button>
@@ -119,7 +119,7 @@ export function ProductDetailDialog({
             <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
               <a
                 href={`mailto:info@artigiani.design?subject=${emailSubject}`}
-                className="inline-flex min-h-11 items-center justify-center border border-background px-4 text-[0.625rem] tracking-[0.08em] uppercase hover:bg-background hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4"
+                className="inline-flex min-h-11 items-center justify-center border border-[#7c5f2d] px-4 text-[0.625rem] tracking-[0.08em] text-[#7c5f2d] uppercase hover:bg-[#7c5f2d] hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#7c5f2d]"
               >
                 Email about this design
               </a>
@@ -128,7 +128,7 @@ export function ProductDetailDialog({
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`View ${family.name} catalogue (PDF, opens in a new tab)`}
-                className="inline-flex min-h-11 items-center gap-3 text-[0.625rem] tracking-[0.08em] uppercase underline underline-offset-4 hover:text-antique-gold focus-visible:outline-2 focus-visible:outline-offset-4"
+                className="inline-flex min-h-11 items-center gap-3 text-[0.625rem] tracking-[0.08em] text-[#7c5f2d] uppercase underline underline-offset-4 hover:decoration-2 focus-visible:outline-2 focus-visible:outline-offset-4"
               >
                 View {family.name} catalogue <span aria-hidden="true">↗</span>
               </a>
