@@ -28,8 +28,8 @@ export default function Home() {
             </div>
           </div>
           <CollectionIntro />
-          <DesignGallery />
           <ArtissimoCollection />
+          <DesignGallery />
           <SpatialApplications />
         </main>
         <AtelierFooter />

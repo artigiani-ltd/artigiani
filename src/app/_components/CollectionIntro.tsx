@@ -4,8 +4,9 @@ import waveInstallation from "../../../public/images/wave-gallery.webp";
 export function CollectionIntro() {
   return (
     <section
+      id="gallery"
       aria-labelledby="collection-intro-title"
-      className="grid gap-12 px-6 pt-16 pb-4 md:grid-cols-2 md:items-center md:gap-[5vw] md:px-[6.5%] md:pt-[7.5vw] md:pb-[4vw]"
+      className="grid scroll-mt-24 gap-12 px-6 pt-16 pb-4 md:grid-cols-2 md:items-center md:gap-[5vw] md:px-[6.5%] md:pt-[7.5vw] md:pb-[4vw]"
     >
       <div data-reveal>
         <h2
