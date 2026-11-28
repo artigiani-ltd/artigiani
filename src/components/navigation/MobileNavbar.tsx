@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { motion, useReducedMotion } from "motion/react";
 import type { NavbarLink } from "./types/navbar";
 
 type MobileNavbarProps = {
@@ -15,7 +14,6 @@ export function MobileNavbar({ brand, brandHref, links }: MobileNavbarProps) {
   const navigationRef = useRef<HTMLElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
     if (!isMenuOpen) return;
@@ -94,13 +92,10 @@ export function MobileNavbar({ brand, brandHref, links }: MobileNavbarProps) {
           </svg>
         </button>
       </div>
-      <motion.ul
+      <ul
         id="mobile-menu-links"
         inert={!isMenuOpen}
-        initial={false}
-        animate={{ opacity: isMenuOpen ? 1 : 0 }}
-        transition={{ duration: reduceMotion ? 0 : 0.26, ease: "easeOut" }}
-        className={`absolute inset-x-0 top-full m-0 flex h-[calc(100dvh-var(--navbar-height))] list-none flex-col gap-6 overflow-y-auto bg-background px-5 pt-11 pb-12 motion-reduce:transition-none ${isMenuOpen ? "" : "pointer-events-none"}`}
+        className={`absolute inset-x-0 top-full m-0 flex h-[calc(100dvh-var(--navbar-height))] list-none flex-col gap-6 overflow-y-auto bg-background px-5 pt-11 pb-12 transition-opacity duration-[260ms] ease-[cubic-bezier(0,0,0.58,1)] motion-reduce:transition-none ${isMenuOpen ? "opacity-100" : "pointer-events-none opacity-0"}`}
       >
         {links.map(({ label, href }) => (
           <li key={`${label}-${href}`}>
@@ -113,7 +108,7 @@ export function MobileNavbar({ brand, brandHref, links }: MobileNavbarProps) {
             </Link>
           </li>
         ))}
-      </motion.ul>
+      </ul>
     </nav>
   );
 }

@@ -1,17 +1,17 @@
 "use client";
 
 import Image from "next/image";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useState } from "react";
 import { installations } from "../constants/installations";
 import { editorial } from "../constants/fonts";
 
 export function InstallationCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [hasChangedInstallation, setHasChangedInstallation] = useState(false);
   const activeInstallation = installations[activeIndex];
-  const reduceMotion = useReducedMotion();
 
   function showInstallation(direction: number) {
+    setHasChangedInstallation(true);
     setActiveIndex(
       (index) =>
         (index + direction + installations.length) % installations.length,
@@ -64,21 +64,21 @@ export function InstallationCarousel() {
         </button>
       </div>
       <div aria-live="polite" aria-atomic="true" className="mt-5 md:mt-[1.8vw]">
-        <AnimatePresence initial={false}>
-          <motion.div
-            key={activeInstallation.title}
-            initial={reduceMotion ? false : { opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.32, ease: "easeOut" }}
-          >
-            <h3 className={`${editorial.className} text-item-title`}>
-              {activeInstallation.title}
-            </h3>
-            <p className="mt-2 text-xs leading-relaxed">
-              {activeInstallation.description}
-            </p>
-          </motion.div>
-        </AnimatePresence>
+        <div
+          key={activeInstallation.title}
+          className={
+            hasChangedInstallation
+              ? "motion-safe:animate-[installation-caption-reveal_0.32s_ease-out]"
+              : undefined
+          }
+        >
+          <h3 className={`${editorial.className} text-item-title`}>
+            {activeInstallation.title}
+          </h3>
+          <p className="mt-2 text-xs leading-relaxed">
+            {activeInstallation.description}
+          </p>
+        </div>
       </div>
     </div>
   );

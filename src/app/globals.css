@@ -530,3 +530,12 @@ body {
     opacity: max(0.55, var(--static-scene-opacity));
   }
 }
+
+@keyframes installation-caption-reveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
