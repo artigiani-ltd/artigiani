@@ -153,7 +153,6 @@ body {
   color: var(--foreground);
   /* Keep slower letter reveals within their artwork's scene window. */
   animation: var(--art-animation) var(--hero-duration) ease-in-out infinite;
-  animation-delay: var(--hero-delay, 0s);
 }
 
 .hero-caption-line {
@@ -172,9 +171,7 @@ body {
   margin: -0.12em -0.18em;
   opacity: 0;
   animation: var(--caption-animation) var(--hero-duration) linear infinite;
-  animation-delay: calc(
-    var(--hero-delay, 0s) + var(--letter-index) * var(--hero-letter-stagger)
-  );
+  animation-delay: calc(var(--letter-index) * var(--hero-letter-stagger));
 }
 
 /* Play the delayed intro once, then join the repeating scene clock. */
@@ -182,12 +179,9 @@ body {
   animation-name: hero-caption-intro-first, hero-caption-intro;
   animation-iteration-count: 1, infinite;
   animation-delay:
+    calc(var(--letter-index) * var(--hero-letter-stagger)),
     calc(
-      var(--hero-delay, 0s) + var(--letter-index) * var(--hero-letter-stagger)
-    ),
-    calc(
-      var(--hero-delay, 0s) + var(--hero-duration) + var(--letter-index) *
-        var(--hero-letter-stagger)
+      var(--hero-duration) + var(--letter-index) * var(--hero-letter-stagger)
     );
 }
 
@@ -199,7 +193,7 @@ body {
   align-self: start;
   justify-self: end;
   width: 90%;
-  animation: hero-art-reveal var(--hero-opening-duration) ease-in-out both;
+  animation: fade-in var(--hero-opening-duration) ease-in-out both;
 }
 
 .hero-art-scene {
@@ -292,15 +286,9 @@ body {
   }
 }
 
-.hero-art-scene,
-.hero-scene-number,
-.hero-scene-number::after {
-  animation-delay: var(--hero-delay, 0s);
-}
-
 /* Artwork, captions, and scene indicators share the same 24s clock. */
 
-@keyframes hero-art-reveal {
+@keyframes fade-in {
   from {
     opacity: 0;
   }
@@ -528,14 +516,5 @@ body {
 
   .art-hero .hero-scene-number {
     opacity: max(0.55, var(--static-scene-opacity));
-  }
-}
-
-@keyframes installation-caption-reveal {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
   }
 }

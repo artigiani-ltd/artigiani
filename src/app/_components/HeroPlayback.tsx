@@ -1,7 +1,7 @@
 "use client";
 
-import { type CSSProperties, type ReactNode, useRef } from "react";
-import { heroDuration, scenes, type HeroScene } from "../constants/hero-scenes";
+import { type ReactNode, useRef } from "react";
+import { scenes, type HeroScene } from "../constants/hero-scenes";
 
 type HeroPlaybackProps = {
   children: ReactNode;
@@ -25,12 +25,7 @@ export function HeroPlayback({ children }: HeroPlaybackProps) {
   }
 
   return (
-    <section
-      ref={heroRef}
-      className="art-hero"
-      aria-labelledby="hero-title"
-      style={{ "--hero-duration": `${heroDuration}s` } as CSSProperties}
-    >
+    <section ref={heroRef} className="art-hero" aria-labelledby="hero-title">
       <div className="hero-composition">
         {children}
         <div

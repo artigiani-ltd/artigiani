@@ -2,8 +2,6 @@ import artworkScene1 from "../../../public/images/artwork-scene-1.png";
 import artworkScene2 from "../../../public/images/artwork-scene-2.png";
 import artworkScene3 from "../../../public/images/artwork-scene-3.png";
 
-export const heroDuration = 24;
-
 // Seek to the point where the artwork and its full caption are visible.
 export const scenes = [
   {

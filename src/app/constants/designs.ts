@@ -1,31 +1,40 @@
-import flower from "../../../public/images/flower-gallery.webp";
-import wave from "../../../public/images/wave-gallery.webp";
-import waveCluster from "../../../public/images/wave-cluster-gallery.webp";
-import rainDrops from "../../../public/images/rain-drops-gallery.webp";
+import livingRoom from "../../../public/images/living-room.webp";
+import livingRoomDetail from "../../../public/images/residence.webp";
+import bedroom from "../../../public/images/bedroom-front.webp";
+import bedroomDetail from "../../../public/images/bedroom-side.webp";
+import lobby from "../../../public/images/wave-gallery.webp";
+import timberDetail from "../../../public/images/nature-timber-detail.webp";
 
 export const designs = [
   {
     number: "01",
-    image: flower,
-    title: "Flower Design",
-    description: "Petal-like modules joined into a radiant bloom.",
+    image: livingRoom,
+    imageAlt:
+      "Framed walnut wave panels above a sofa in a light-filled living room.",
+    detailImage: livingRoomDetail,
+    detailAlt: "An angled view of the living room’s sculptural walnut panels.",
+    title: "Living Room",
+    description: "Bring a sense of movement to everyday living.",
   },
   {
     number: "02",
-    image: wave,
-    title: "Wave Design",
-    description: "Slender, sinuous lines that flow like moving water.",
+    image: bedroom,
+    imageAlt: "Flowing walnut wall sculptures arranged above a bed.",
+    detailImage: bedroomDetail,
+    detailAlt:
+      "A master bedroom with walnut wave panels and a flower-shaped mirror.",
+    title: "Master Bedroom",
+    description: "Create a quiet retreat with sculptural warmth.",
   },
   {
     number: "03",
-    image: waveCluster,
-    title: "Wave Cluster Design",
-    description: "Rippling waves gathered into rounded fields.",
-  },
-  {
-    number: "04",
-    image: rainDrops,
-    title: "Rain Drops Design",
-    description: "Teardrop forms falling in a quiet, steady rhythm.",
+    image: lobby,
+    imageAlt:
+      "A sculptural wave installation on marble above a gold reception desk.",
+    detailImage: timberDetail,
+    detailAlt:
+      "A close view of the natural grain and curves of a timber sculpture.",
+    title: "Hotel Lobby",
+    description: "Shape a memorable welcome through natural forms.",
   },
 ] as const;
