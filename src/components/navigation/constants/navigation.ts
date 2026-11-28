@@ -7,8 +7,8 @@ export const leftLinks = [
 ] as const satisfies readonly NavbarLink[];
 
 export const rightLinks = [
-  { label: "Products", href: "/#products" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Products", href: "/products" },
+  { label: "Contact", href: "/contact" },
 ] as const satisfies readonly NavbarLink[];
 
 export const navigationLinks: readonly NavbarLink[] = [
