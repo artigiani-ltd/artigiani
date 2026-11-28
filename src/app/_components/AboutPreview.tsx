@@ -1,6 +1,6 @@
 import Link from "next/link";
 import waveDesign from "../../../public/images/about-us-wave-design.jpg";
-import jananImage from "../../../public/images/about-us-janan-portrait.webp";
+import jananImage from "../../../public/images/about-us-janan-wide.jpg";
 import { ArtworkImage } from "./ArtworkImage";
 
 export function AboutPreview() {
