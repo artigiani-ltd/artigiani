@@ -16,7 +16,8 @@ export const designs = [
     detailAlt: "An angled view of the living room’s sculptural walnut panels.",
     title: "Living Room",
     caption: "Artissimo 100",
-    description: "Bring a sense of movement to everyday living.",
+    description:
+      "Handcrafted Artissimo 100 mahogany motifs elevate a low partition wall to preserve open spaciousness, paired with a sculptural crest adorning the light marble dining wall.",
   },
   {
     number: "02",
@@ -28,7 +29,8 @@ export const designs = [
       "A master bedroom with walnut wave panels and a flower-shaped mirror.",
     title: "Master Bedroom",
     caption: "Artissimo 100",
-    description: "Create a quiet retreat with sculptural warmth.",
+    description:
+      "Sculpted Canaletto walnut flames rise organically from the headboard toward the ceiling, accompanied by a matching relief crown framing the mirror.",
   },
   {
     number: "03",
