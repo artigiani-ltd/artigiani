@@ -1,0 +1,11 @@
+@media (prefers-reduced-motion: no-preference) {
+  .about-opening-fade {
+    animation: fade-in var(--opening-duration, 2.7s) ease-in-out
+      var(--opening-delay, 0s) both;
+  }
+
+  .about-opening-letter {
+    animation: fade-in 450ms linear both;
+    animation-delay: calc(1.8s + var(--letter-index) * 0.09s);
+  }
+}
