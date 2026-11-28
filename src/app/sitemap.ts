@@ -8,6 +8,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ? [
         { url: siteUrl.href },
         { url: new URL("/about", siteUrl).href },
+        { url: new URL("/products", siteUrl).href },
+        { url: new URL("/contact", siteUrl).href },
         ...designs.map(({ slug }) => ({
           url: new URL(`/designs/${slug}`, siteUrl).href,
         })),
