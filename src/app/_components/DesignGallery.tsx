@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { designs } from "../constants/designs";
 import { ArtworkImage } from "./ArtworkImage";
 
@@ -60,15 +61,13 @@ export function DesignGallery() {
               <p className="mt-3 max-w-xs text-sm leading-relaxed md:mt-4 md:text-base">
                 {design.description}
               </p>
-              <a
-                href="/artissimo-compositions.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`View designs for the ${design.title.toLowerCase()} (PDF, opens in a new tab)`}
+              <Link
+                href={`/designs/${design.slug}`}
+                aria-label={`View designs for the ${design.title.toLowerCase()}`}
                 className="mt-4 inline-flex min-h-11 items-center text-xs tracking-[0.12em] text-[#7c5f2d] uppercase underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#7c5f2d] md:mt-6"
               >
                 View the designs
-              </a>
+              </Link>
             </figcaption>
           </figure>
         ))}

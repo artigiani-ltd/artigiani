@@ -7,6 +7,7 @@ type ArtworkImageProps = {
   sizes: string;
   fit?: "cover" | "contain";
   zoomOnHover?: boolean;
+  preload?: boolean;
 };
 
 export function ArtworkImage({
@@ -16,6 +17,7 @@ export function ArtworkImage({
   sizes,
   fit = "cover",
   zoomOnHover = true,
+  preload = false,
 }: ArtworkImageProps) {
   return (
     <div
@@ -27,6 +29,7 @@ export function ArtworkImage({
         alt={alt}
         fill
         sizes={sizes}
+        preload={preload}
         className={fit === "contain" ? "object-contain" : "object-cover"}
       />
     </div>
