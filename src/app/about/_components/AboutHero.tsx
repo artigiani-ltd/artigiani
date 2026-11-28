@@ -37,12 +37,12 @@ export function AboutHero() {
           </span>
         </h1>
         <p
-          className={`about-opening-fade ${editorial.className} mt-5 text-item-title leading-tight tracking-normal text-gold [--opening-delay:3.3s] [--opening-duration:0.9s]`}
+          className={`about-opening-fade ${editorial.className} mt-5 text-item-title leading-tight tracking-normal text-gold [--opening-delay:1.7s] [--opening-duration:0.7s]`}
         >
           From Architecture to Art
         </p>
       </header>
-      <div className="about-opening-fade mx-auto max-w-7xl px-6 [--opening-delay:4.4s] md:px-12">
+      <div className="about-opening-fade mx-auto max-w-7xl px-6 [--opening-delay:2.4s] [--opening-duration:1.2s] md:px-12">
         <Image
           src={jananPortrait}
           alt="Janan Khammo standing with folded arms in front of his sculptural wooden wave panels"

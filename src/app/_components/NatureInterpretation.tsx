@@ -29,7 +29,7 @@ export function NatureInterpretation() {
         >
           <div
             data-reveal-step
-            className="relative mx-auto w-full max-w-100 self-start [--reveal-delay:4s] [--reveal-duration:3.6s] md:col-start-2 md:row-start-1 md:max-w-none"
+            className="relative mx-auto w-full max-w-100 self-start [--reveal-delay:2.5s] [--reveal-duration:3.6s] md:col-start-2 md:row-start-1 md:max-w-none"
           >
             <ScrollParallax className="aspect-4/5 md:aspect-auto md:h-[44vw]">
               <Image
