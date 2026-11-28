@@ -9,6 +9,7 @@ import { DesignGallery } from "./_components/DesignGallery";
 import { SpatialApplications } from "./_components/SpatialApplications";
 import { ArtissimoCollection } from "./_components/ArtissimoCollection";
 import { AtelierFooter } from "./_components/AtelierFooter";
+import { CollectionIntro } from "./_components/CollectionIntro";
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
               <NatureInterior />
             </div>
           </div>
+          <CollectionIntro />
           <DesignGallery />
           <ArtissimoCollection />
           <SpatialApplications />
