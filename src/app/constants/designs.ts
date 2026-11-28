@@ -2,8 +2,8 @@ import livingRoom from "../../../public/images/living-room.webp";
 import livingRoomDetail from "../../../public/images/residence.webp";
 import bedroom from "../../../public/images/bedroom-front.webp";
 import bedroomDetail from "../../../public/images/bedroom-side.webp";
-import lobby from "../../../public/images/wave-gallery.webp";
-import timberDetail from "../../../public/images/nature-timber-detail.webp";
+import lobby from "../../../public/images/hotel-reception-front.webp";
+import lobbyDetail from "../../../public/images/hotel-reception-side.webp";
 
 export const designs = [
   {
@@ -15,7 +15,9 @@ export const designs = [
     detailImage: livingRoomDetail,
     detailAlt: "An angled view of the living room’s sculptural walnut panels.",
     title: "Living Room",
-    description: "Bring a sense of movement to everyday living.",
+    caption: "Artissimo 100",
+    description:
+      "Handcrafted Artissimo 100 mahogany motifs elevate a low partition wall to preserve open spaciousness, paired with a sculptural crest adorning the light marble dining wall.",
   },
   {
     number: "02",
@@ -26,7 +28,9 @@ export const designs = [
     detailAlt:
       "A master bedroom with walnut wave panels and a flower-shaped mirror.",
     title: "Master Bedroom",
-    description: "Create a quiet retreat with sculptural warmth.",
+    caption: "Artissimo 100",
+    description:
+      "Sculpted Canaletto walnut flames rise organically from the headboard toward the ceiling, accompanied by a matching relief crown framing the mirror.",
   },
   {
     number: "03",
@@ -34,10 +38,12 @@ export const designs = [
     image: lobby,
     imageAlt:
       "A sculptural wave installation on marble above a gold reception desk.",
-    detailImage: timberDetail,
+    detailImage: lobbyDetail,
     detailAlt:
-      "A close view of the natural grain and curves of a timber sculpture.",
+      "An angled view of the wave sculpture on marble beside a golden reception desk.",
     title: "Hotel Lobby",
-    description: "Shape a memorable welcome through natural forms.",
+    caption: "Artissimo 100 · Wave 4B",
+    description:
+      "A monumental vertical sculpture in light ash wood rises above a golden brass counter, harmonizing with the white marble backdrop of a New York residence hotel.",
   },
 ] as const;
