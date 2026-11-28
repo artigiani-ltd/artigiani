@@ -23,10 +23,10 @@ export function InstallationCarousel() {
       role="region"
       aria-roledescription="carousel"
       aria-label="Artissimo installations"
-      className="mx-auto w-full md:w-[84%]"
+      className="mx-auto w-full md:w-[93%]"
     >
       <div data-reveal="image" className="relative">
-        <div className="relative aspect-[1.497] overflow-hidden bg-background">
+        <div className="relative aspect-[1.497] overflow-hidden bg-background md:aspect-[1.71]">
           {installations.map((installation, index) => (
             <div
               key={installation.title}

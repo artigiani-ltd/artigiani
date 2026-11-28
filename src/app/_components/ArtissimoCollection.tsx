@@ -1,68 +1,102 @@
-import { compositions } from "../constants/compositions";
+import { compositionFamilies } from "../constants/compositions";
+import { editorial } from "../constants/fonts";
 import { ArtworkImage } from "./ArtworkImage";
 
-const inquiryClassName =
-  "inline-flex min-h-11 items-center justify-center border border-antique-gold px-5 text-xs tracking-[0.08em] text-background uppercase transition-colors hover:border-gold hover:bg-gold hover:text-background focus-visible:outline-2 focus-visible:outline-offset-4 motion-reduce:transition-none";
+const catalogueLinkClassName =
+  "inline-flex min-h-11 items-center text-xs uppercase underline underline-offset-4 transition-colors hover:text-background focus-visible:outline-2 focus-visible:outline-offset-4 motion-reduce:transition-none";
 
 export function ArtissimoCollection() {
   return (
     <section
       id="products"
       aria-labelledby="compositions-title"
-      className="px-6 pt-12 pb-24 md:px-[5%] md:pt-[5vw] md:pb-[12vw]"
+      className="scroll-mt-24 px-6 pt-20 pb-8 text-[#7c5f2d] md:px-[4%] md:pt-[14vw] md:pb-[4vw]"
     >
       <div
         data-reveal
-        className="mb-10 flex flex-wrap items-start justify-between gap-7 md:mb-[4.5vw]"
+        className="mx-auto mb-14 max-w-3xl text-center md:mb-[6vw]"
       >
-        <div>
-          <h2
-            id="compositions-title"
-            className="collection-heading text-section-title leading-none"
-          >
-            Compositions
-          </h2>
-          <p className="collection-heading mt-6 max-w-2xl text-body leading-relaxed tracking-normal md:mt-[2.5vw] md:max-w-[48vw]">
-            Modular configurations available in standard dimensions or
-            commissioned to your exact architectural specifications.
-          </p>
-        </div>
+        <p className="text-xs uppercase">Various compositions</p>
+        <h2
+          id="compositions-title"
+          className="collection-heading mt-8 text-section-title leading-tight text-background"
+        >
+          The Artissimo 100 Collection
+        </h2>
+        <p className="mx-auto mt-7 max-w-xl text-sm leading-relaxed">
+          Modular configurations available in standard dimensions or
+          commissioned to your exact architectural specifications.
+        </p>
         <a
           href="/artissimo-compositions.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="View more compositions in the catalogue (PDF, opens in a new tab)"
-          className={inquiryClassName}
+          aria-label="View all compositions in the catalogue (PDF, opens in a new tab)"
+          className="mt-7 inline-flex min-h-11 items-center justify-center border border-background px-5 text-[10px] tracking-[0.1em] text-background uppercase transition-colors hover:bg-background hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 motion-reduce:transition-none"
         >
-          View more compositions
+          View all compositions
         </a>
       </div>
-      <div className="grid gap-x-6 gap-y-12 sm:grid-cols-2 md:grid-cols-3 md:gap-x-[2vw] md:gap-y-[2vw]">
-        {compositions.map((composition) => (
-          <figure key={composition.title} className="min-w-0">
-            <ArtworkImage
-              src={composition.image}
-              alt={composition.title}
-              className="aspect-square"
-              fit="contain"
-              sizes="(min-width: 768px) 29vw, (min-width: 640px) 44vw, calc(100vw - 48px)"
-            />
-            <figcaption data-reveal className="mt-4">
-              <h3 className="collection-heading min-h-12 text-item-title leading-tight tracking-normal">
-                {composition.title}
+      <div>
+        {compositionFamilies.map((family, index) => (
+          <div
+            key={family.name}
+            className="grid gap-7 border-t border-antique-gold/35 py-10 md:grid-cols-[1.6fr_3fr] md:gap-[3vw] md:py-[4.5vw]"
+          >
+            <div data-reveal>
+              <p className={`${editorial.className} text-lg`}>
+                {String(index + 1).padStart(2, "0")}
+              </p>
+              <h3
+                className={`${editorial.className} mt-2 text-[clamp(2.25rem,4.5vw,4rem)] leading-none text-background`}
+              >
+                {family.name}
               </h3>
-              <p className="mt-6 text-xs leading-relaxed md:mt-[2vw]">
-                {composition.dimensions}
+              <p className={`${editorial.className} mt-3 text-xl`}>
+                {family.inspiration}
               </p>
               <a
-                href={`mailto:info@artigiani.design?subject=${encodeURIComponent(`Artissimo 100 inquiry — ${composition.title}`)}`}
-                aria-label={`Email us about this piece: ${composition.title}`}
-                className={`mt-6 ${inquiryClassName}`}
+                href={`/artissimo-compositions.pdf#page=${family.cataloguePage}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`View all ${family.count} ${family.name} compositions (PDF, opens in a new tab)`}
+                className={`mt-5 md:mt-[3.5vw] ${catalogueLinkClassName}`}
               >
-                Email us about this piece
+                View all {family.count} {family.name} compositions&nbsp;→
               </a>
-            </figcaption>
-          </figure>
+            </div>
+            <div className="grid grid-cols-1 gap-x-5 gap-y-8 min-[480px]:grid-cols-3 md:gap-x-[2vw]">
+              {family.pieces.map((piece) => (
+                <figure key={piece.number} className="min-w-0">
+                  <ArtworkImage
+                    src={piece.image}
+                    alt={`${family.name} composition ${piece.number.toUpperCase()} — catalogue drawing`}
+                    className="aspect-square bg-white [&_img]:p-[8%]"
+                    fit="contain"
+                    sizes="(min-width: 768px) 19vw, (min-width: 480px) 29vw, calc(100vw - 48px)"
+                  />
+                  <figcaption
+                    data-reveal
+                    className="mt-4 text-xs leading-relaxed tracking-[0.08em]"
+                  >
+                    <h4 className="font-semibold uppercase">
+                      No. {piece.number}
+                    </h4>
+                    <p className="mt-2">{piece.millimeters} mm</p>
+                    <p className="mt-1">{piece.inches} in</p>
+                    <p className="mt-2">Price on request</p>
+                    <a
+                      href={`mailto:info@artigiani.design?subject=${encodeURIComponent(`Artissimo 100 inquiry — ${family.name} ${piece.number}`)}`}
+                      aria-label={`Inquire about ${family.name} composition ${piece.number}`}
+                      className={`mt-2 ${catalogueLinkClassName}`}
+                    >
+                      Inquire
+                    </a>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
         ))}
       </div>
     </section>
