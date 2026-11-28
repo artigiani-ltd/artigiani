@@ -6,11 +6,10 @@ import type { NavbarLink } from "./types/navbar";
 
 type MobileNavbarProps = {
   brand: string;
-  brandHref: string;
   links: readonly NavbarLink[];
 };
 
-export function MobileNavbar({ brand, brandHref, links }: MobileNavbarProps) {
+export function MobileNavbar({ brand, links }: MobileNavbarProps) {
   const navigationRef = useRef<HTMLElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -64,7 +63,7 @@ export function MobileNavbar({ brand, brandHref, links }: MobileNavbarProps) {
       <div className="flex min-h-(--navbar-height) items-center justify-between px-5">
         <Link
           className="font-brand text-[30px] leading-none text-foreground no-underline transition-colors duration-150 hover:text-gold focus-visible:outline-2 focus-visible:outline-offset-4"
-          href={brandHref}
+          href="/"
           aria-label={`${brand} home`}
           onClick={() => setIsMenuOpen(false)}
         >

@@ -68,7 +68,7 @@ export function InstallationCarousel() {
           key={activeInstallation.title}
           className={
             hasChangedInstallation
-              ? "motion-safe:animate-[installation-caption-reveal_0.32s_ease-out]"
+              ? "motion-safe:animate-[fade-in_0.32s_ease-out]"
               : undefined
           }
         >

@@ -1,10 +1,6 @@
 import type { Metadata } from "next";
 import { interDisplay, beauRivage, editorial } from "./constants/fonts";
 import { Navbar } from "@/components/navigation/Navbar";
-import {
-  leftLinks,
-  rightLinks,
-} from "@/components/navigation/constants/navigation";
 import { siteMetadata } from "./constants/site-metadata";
 import { SmoothScroll } from "./_components/SmoothScroll";
 import "lenis/dist/lenis.css";
@@ -27,11 +23,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           Skip to content
         </a>
         <div className="relative min-h-screen bg-background">
-          <Navbar
-            brand="Artigiani"
-            leftLinks={leftLinks}
-            rightLinks={rightLinks}
-          />
+          <Navbar />
           {children}
         </div>
       </body>
