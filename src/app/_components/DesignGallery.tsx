@@ -35,14 +35,14 @@ export function DesignGallery() {
               <ArtworkImage
                 src={design.image}
                 alt={design.imageAlt}
-                className="aspect-[4/3] w-[85%]"
+                className="aspect-4/3 w-[85%]"
                 sizes="(min-width: 768px) 43vw, calc(85vw - 41px)"
               />
-              <div className="relative z-10 -mt-[32%] ml-auto w-[42%] border-4 border-foreground md:border-8">
+              <div className="relative z-10 mt-[-32%] ml-auto w-[42%] border-4 border-foreground md:border-8">
                 <ArtworkImage
                   src={design.detailImage}
                   alt={design.detailAlt}
-                  className="aspect-[3/4]"
+                  className="aspect-3/4"
                   sizes="(min-width: 768px) 21vw, calc(42vw - 28px)"
                 />
               </div>

@@ -27,10 +27,10 @@ export default function Home() {
             </div>
           </div>
           <DesignGallery />
-          <SpatialApplications />
           <ArtissimoCollection />
+          <SpatialApplications />
         </main>
-        <AtelierFooter light />
+        <AtelierFooter />
       </ScrollReveal>
     </div>
   );
