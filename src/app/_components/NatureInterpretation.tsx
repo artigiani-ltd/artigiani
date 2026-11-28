@@ -5,6 +5,7 @@ import timberDetail from "../../../public/images/nature-timber-detail.webp";
 import { editorial } from "../constants/fonts";
 import { ArtworkImage } from "./ArtworkImage";
 import { ScrollParallax } from "./ScrollParallax";
+import { NatureScroll } from "./NatureScroll";
 
 export function NatureInterpretation() {
   return (
@@ -13,73 +14,82 @@ export function NatureInterpretation() {
       data-reveal="sequence"
       className="bg-background px-6 py-20 text-foreground md:px-[6.35%] md:pt-[8vw] md:pb-[13vw]"
     >
-      <h2
-        id="nature-interpretation-title"
-        data-reveal-step
-        className={`${editorial.className} mb-10 text-center text-section-title leading-[1.05] font-normal text-balance tracking-[-0.035em] [--reveal-lift:1.5rem] md:mb-[7.2vw]`}
-      >
-        <span className="md:block">A Luxurious </span>
-        Interpretation of Nature
-      </h2>
-      <div className="grid gap-8 [--reveal-delay:2s] md:grid-cols-[1fr_1.14fr_1fr] md:gap-x-[4vw] md:gap-y-0">
-        <div
+      <NatureScroll>
+        <h2
+          id="nature-interpretation-title"
           data-reveal-step
-          className="relative mx-auto w-full max-w-100 self-start [--reveal-delay:4s] [--reveal-duration:3.6s] md:col-start-2 md:row-start-1 md:max-w-none"
+          className={`${editorial.className} mb-10 text-center text-section-title leading-[1.05] font-normal text-balance tracking-[-0.035em] [--reveal-lift:1.5rem] md:mb-[7.2vw]`}
         >
-          <ScrollParallax className="aspect-4/5 md:aspect-auto md:h-[44vw]">
-            <Image
-              src={timberDetail}
-              alt="Sculpted waves of warm Italian timber with deep blue inlays."
-              fill
-              sizes="(min-width: 768px) 30vw, (min-width: 448px) 400px, calc(100vw - 48px)"
-              className="object-cover"
-            />
-          </ScrollParallax>
-        </div>
-        <div className="md:col-start-1 md:row-start-1 md:self-stretch">
-          <p
+          <span className="md:block">A Luxurious </span>
+          Interpretation of Nature
+        </h2>
+        <div
+          data-nature-grid
+          className="grid gap-8 [--reveal-delay:2s] md:grid-cols-[1fr_1.14fr_1fr] md:gap-x-[4vw] md:gap-y-0"
+        >
+          <div
             data-reveal-step
-            className="text-body leading-relaxed motion-safe:md:sticky motion-safe:md:top-[calc(var(--navbar-height)+2rem)] md:text-right"
+            className="relative mx-auto w-full max-w-100 self-start [--reveal-delay:4s] [--reveal-duration:3.6s] md:col-start-2 md:row-start-1 md:max-w-none"
           >
-            Nature continues to inspire humanity with an infinite variety of
-            forms and colours, and so does “Artissimo 100”. Inspired by the
-            beautiful undulating organic shapes and forms of Water, Sand, Plants
-            and Flowers, it is a unique vision of art, designed to bring
-            nature’s infinite compositions into your own interiors in a
-            luxurious style.
-          </p>
-        </div>
-        <div className="flex flex-col justify-between gap-8 md:col-start-3 md:row-start-1">
-          <div data-reveal-step className="grid grid-cols-2 gap-3">
-            {[
-              { src: water, caption: "Water" },
-              { src: sand, caption: "Sand" },
-            ].map(({ src, caption }) => (
-              <figure key={caption}>
-                <ArtworkImage
-                  src={src}
-                  alt=""
-                  className="aspect-square"
-                  sizes="(min-width: 768px) 13vw, calc(50vw - 30px)"
-                  fit="contain"
-                  zoomOnHover={false}
-                />
-                <figcaption
-                  className={`${editorial.className} mt-2 text-center text-sm`}
-                >
-                  {caption}
-                </figcaption>
-              </figure>
-            ))}
+            <ScrollParallax className="aspect-4/5 md:aspect-auto md:h-[44vw]">
+              <Image
+                src={timberDetail}
+                alt="Sculpted waves of warm Italian timber with deep blue inlays."
+                fill
+                sizes="(min-width: 768px) 30vw, (min-width: 448px) 400px, calc(100vw - 48px)"
+                className="object-cover"
+              />
+            </ScrollParallax>
           </div>
-          <p data-reveal-step className="text-body leading-relaxed">
-            Artissimo 100 is formed by a collection of modules, designed to be
-            harmoniously and precisely joined together, offering you a great
-            opportunity to rebuild the splendid motifs of nature in a modern and
-            abstract work of art.
-          </p>
+          <div className="md:col-start-1 md:row-start-1 md:self-stretch">
+            <p
+              data-nature-copy
+              data-reveal-step
+              className="text-body leading-relaxed md:text-right"
+            >
+              Nature continues to inspire humanity with an infinite variety of
+              forms and colours, and so does “Artissimo 100”. Inspired by the
+              beautiful undulating organic shapes and forms of Water, Sand,
+              Plants and Flowers, it is a unique vision of art, designed to
+              bring nature’s infinite compositions into your own interiors in a
+              luxurious style.
+            </p>
+          </div>
+          <div className="flex flex-col justify-between gap-8 md:col-start-3 md:row-start-1">
+            <div
+              data-reveal-step
+              className="grid grid-cols-2 gap-3 [--reveal-delay:3.5s]"
+            >
+              {[
+                { src: water, caption: "Water" },
+                { src: sand, caption: "Sand" },
+              ].map(({ src, caption }) => (
+                <figure key={caption}>
+                  <ArtworkImage
+                    src={src}
+                    alt=""
+                    className="aspect-square"
+                    sizes="(min-width: 768px) 13vw, calc(50vw - 30px)"
+                    fit="contain"
+                    zoomOnHover={false}
+                  />
+                  <figcaption
+                    className={`${editorial.className} mt-2 text-center text-sm`}
+                  >
+                    {caption}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+            <p data-reveal-step className="text-body leading-relaxed">
+              Artissimo 100 is formed by a collection of modules, designed to be
+              harmoniously and precisely joined together, offering you a great
+              opportunity to rebuild the splendid motifs of nature in a modern
+              and abstract work of art.
+            </p>
+          </div>
         </div>
-      </div>
+      </NatureScroll>
     </section>
   );
 }
