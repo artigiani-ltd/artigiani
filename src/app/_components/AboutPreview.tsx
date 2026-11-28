@@ -32,9 +32,6 @@ export function AboutPreview() {
               className="aspect-4/5 border border-antique-gold [&_img]:p-1"
               sizes="(min-width: 1640px) 373px, (min-width: 1524px) 341px, (min-width: 1334px) calc(36.96vw - 222px), (min-width: 768px) 21vw, 44vw"
             />
-            {/* <figcaption className="mt-3 text-right text-[0.625rem] font-semibold tracking-widest text-gold uppercase">
-              Detail
-            </figcaption> */}
           </figure>
         </div>
         <div

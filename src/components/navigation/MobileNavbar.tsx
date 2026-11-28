@@ -81,23 +81,17 @@ export function MobileNavbar({ brand, brandHref, links }: MobileNavbarProps) {
           aria-expanded={isMenuOpen}
           onClick={() => setIsMenuOpen((open) => !open)}
         >
-          {isMenuOpen ? (
-            <svg
-              aria-hidden="true"
-              viewBox="0 0 24 24"
-              className="size-5 fill-none stroke-current stroke-[1.5]"
-            >
-              <path d="M5 5l14 14M19 5L5 19" />
-            </svg>
-          ) : (
-            <svg
-              aria-hidden="true"
-              viewBox="0 0 24 24"
-              className="size-5 fill-none stroke-current stroke-[1.5]"
-            >
-              <path d="M5 7h14M5 12h14M5 17h14" />
-            </svg>
-          )}
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+            className="size-5 fill-none stroke-current stroke-[1.5]"
+          >
+            <path
+              d={
+                isMenuOpen ? "M5 5l14 14M19 5L5 19" : "M5 7h14M5 12h14M5 17h14"
+              }
+            />
+          </svg>
         </button>
       </div>
       <motion.ul

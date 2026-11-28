@@ -10,31 +10,19 @@ export const scenes = [
     id: "intro",
     lines: ["Artissimo 100"],
     seekTime: 2.7,
-    image: {
-      src: artworkScene1.src,
-      width: artworkScene1.width,
-      height: artworkScene1.height,
-    },
+    image: artworkScene1,
   },
   {
     id: "nature",
     lines: ["Art inspired by nature"],
     seekTime: 10.6,
-    image: {
-      src: artworkScene2.src,
-      width: artworkScene2.width,
-      height: artworkScene2.height,
-    },
+    image: artworkScene2,
   },
   {
     id: "final",
     lines: ["An abstract and luxurious", "interpretation of nature"],
     seekTime: 21,
-    image: {
-      src: artworkScene3.src,
-      width: artworkScene3.width,
-      height: artworkScene3.height,
-    },
+    image: artworkScene3,
   },
 ] as const;
 
