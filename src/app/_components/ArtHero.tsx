@@ -34,7 +34,7 @@ export function ArtHero() {
               height={image.height}
               loading="eager"
               fetchPriority={id === "intro" ? "high" : "low"}
-              sizes="(max-width: 767px) calc(100vw - 128px), 60vw"
+              sizes="(max-width: 1023px) calc(90vw - 100px), (max-width: 1919px) 48vw, 60vw"
               draggable={false}
             />
           </div>
