@@ -10,13 +10,13 @@ export function SpatialApplications() {
         <h2
           id="places-title"
           data-reveal
-          className="collection-heading text-[clamp(2.75rem,4.2vw,5rem)] leading-none"
+          className="collection-heading text-section-title leading-none"
         >
           REAL PLACES
         </h2>
         <p
           data-reveal
-          className="max-w-lg text-sm leading-[1.6] text-[#52524e] md:pr-[4vw] md:text-[clamp(0.875rem,1.25vw,1.5rem)]"
+          className="max-w-lg text-body leading-relaxed md:pr-[4vw]"
         >
           Designed to transform residential and commercial architecture. Each
           undulating modular panel integrates seamlessly into living spaces,

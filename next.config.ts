@@ -3,6 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   experimental: {
     agentUpgrade: "security",
+    turbopackFileSystemCacheForDev: false,
   },
   poweredByHeader: false,
   async headers() {

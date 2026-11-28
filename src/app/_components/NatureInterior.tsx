@@ -1,18 +1,18 @@
 import Image from "next/image";
-import interior from "../../../public/images/living-room.webp";
+import banner from "../../../public/images/banner-gradient.jpg";
 import { ScrollParallax } from "./ScrollParallax";
 
 export function NatureInterior() {
   return (
     <section
       aria-labelledby="walls-title"
-      className="relative isolate overflow-hidden text-[#f8f7f3]"
+      className="relative isolate grid min-h-96 overflow-hidden bg-background text-foreground sm:min-h-[max(22rem,32vw)]"
     >
-      <div data-reveal="image">
-        <ScrollParallax className="h-72 sm:h-[23.5vw] sm:min-h-64">
+      <div data-reveal="image" className="absolute inset-0">
+        <ScrollParallax className="h-full" travel={0.65}>
           <Image
-            src={interior}
-            alt="Sculptural walnut wave panels and a flower composition in a living room."
+            src={banner}
+            alt="Three sculptural wood panels with flowing wave patterns."
             fill
             sizes="100vw"
             className="object-cover object-[center_40%]"
@@ -21,15 +21,23 @@ export function NatureInterior() {
       </div>
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-black/40"
+        className="pointer-events-none absolute inset-0 bg-linear-to-b from-background/95 via-transparent via-42% to-foreground"
       />
-      <h2
-        id="walls-title"
+      <div
         data-reveal
-        className="collection-heading absolute right-6 bottom-6 left-6 text-[clamp(3rem,5.25vw,6.5rem)] leading-none md:inset-x-[2.5%] md:bottom-[3vw]"
+        className="relative self-start px-6 pt-16 md:px-[4.5%] md:pt-20"
       >
-        Walls in Motion
-      </h2>
+        <h2
+          id="walls-title"
+          className="collection-heading text-section-title leading-none"
+        >
+          Walls in Motion
+        </h2>
+        <p className="mt-3 max-w-xl text-body leading-relaxed text-pretty">
+          Undulating wall sculptures in natural seasoned wood, composed for your
+          own interiors.
+        </p>
+      </div>
     </section>
   );
 }

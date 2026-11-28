@@ -1,5 +1,6 @@
 import { OrganizationStructuredData } from "./_components/OrganizationStructuredData";
 import { ArtHero } from "./_components/ArtHero";
+import { AboutPreview } from "./_components/AboutPreview";
 import { NatureInterpretation } from "./_components/NatureInterpretation";
 import { NatureInterior } from "./_components/NatureInterior";
 import { collectionHeading } from "./constants/fonts";
@@ -11,20 +12,25 @@ import { AtelierFooter } from "./_components/AtelierFooter";
 
 export default function Home() {
   return (
-    <div className={collectionHeading.variable}>
+    <div
+      className={`${collectionHeading.variable} bg-foreground text-background`}
+    >
       <OrganizationStructuredData />
       <ScrollReveal>
         <main id="main-content">
-          <ArtHero />
-          <div className="bg-[#f8f7f3] text-[#242421]">
-            <NatureInterpretation />
-            <NatureInterior />
-            <DesignGallery />
-            <SpatialApplications />
-            <ArtissimoCollection />
+          <div className="text-foreground">
+            <ArtHero />
+            <AboutPreview />
+            <div className="bg-surface">
+              <NatureInterpretation />
+              <NatureInterior />
+            </div>
           </div>
+          <DesignGallery />
+          <SpatialApplications />
+          <ArtissimoCollection />
         </main>
-        <AtelierFooter />
+        <AtelierFooter light />
       </ScrollReveal>
     </div>
   );

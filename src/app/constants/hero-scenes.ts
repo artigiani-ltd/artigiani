@@ -4,37 +4,25 @@ import artworkScene3 from "../../../public/images/artwork-scene-3.png";
 
 export const heroDuration = 24;
 
-// Seek past each letter reveal so manually selected captions are immediately readable.
+// Seek to the point where the artwork and its full caption are visible.
 export const scenes = [
   {
     id: "intro",
     lines: ["Artissimo 100"],
-    start: 0.22,
-    image: {
-      src: artworkScene1.src,
-      width: artworkScene1.width,
-      height: artworkScene1.height,
-    },
+    seekTime: 2.7,
+    image: artworkScene1,
   },
   {
     id: "nature",
     lines: ["Art inspired by nature"],
-    start: 0.5,
-    image: {
-      src: artworkScene2.src,
-      width: artworkScene2.width,
-      height: artworkScene2.height,
-    },
+    seekTime: 10.6,
+    image: artworkScene2,
   },
   {
     id: "final",
     lines: ["An abstract and luxurious", "interpretation of nature"],
-    start: 0.87,
-    image: {
-      src: artworkScene3.src,
-      width: artworkScene3.width,
-      height: artworkScene3.height,
-    },
+    seekTime: 21,
+    image: artworkScene3,
   },
 ] as const;
 
