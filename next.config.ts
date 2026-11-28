@@ -6,6 +6,9 @@ const nextConfig: NextConfig = {
     turbopackFileSystemCacheForDev: false,
   },
   poweredByHeader: false,
+  images: {
+    imageSizes: [32, 48, 64, 96, 128, 256, 384, 512],
+  },
   async headers() {
     return [
       {
