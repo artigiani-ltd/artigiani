@@ -8,6 +8,7 @@ import timberDetail from "../../../public/images/nature-timber-detail.webp";
 export const designs = [
   {
     number: "01",
+    slug: "living-room",
     image: livingRoom,
     imageAlt:
       "Framed walnut wave panels above a sofa in a light-filled living room.",
@@ -18,6 +19,7 @@ export const designs = [
   },
   {
     number: "02",
+    slug: "master-bedroom",
     image: bedroom,
     imageAlt: "Flowing walnut wall sculptures arranged above a bed.",
     detailImage: bedroomDetail,
@@ -28,6 +30,7 @@ export const designs = [
   },
   {
     number: "03",
+    slug: "hotel-reception",
     image: lobby,
     imageAlt:
       "A sculptural wave installation on marble above a gold reception desk.",
